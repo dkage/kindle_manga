@@ -1,9 +1,10 @@
 import requests
 import shutil
 from bs4 import BeautifulSoup
-import sys
 import functions
+import sys
 
+# TODO make these inputs (web? DJANGO?)
 manga_reader_url = 'https://www.mangareader.net/'
 manga_folder = 'tmp/'
 series = 'one-piece'
@@ -14,7 +15,6 @@ functions.check_dir(manga_folder)
 functions.check_dir(manga_folder + series)
 functions.check_dir(manga_full_path)
 
-sys.exit()
 full_url = manga_reader_url + series + '/' + chapter
 
 last_page = 1
@@ -23,8 +23,8 @@ while requests.get(full_url + '/' + str(last_page + 1)).status_code != 404:
     last_page = last_page + 1
 print('This chapter has ' + str(last_page) + ' pages')
 
-for page in range(1, last_page):
-
+for page in range(1, last_page + 1):
+    print('Downloading page ' + str(page))
     http_return = requests.get(full_url + '/' + str(page))
     soup = BeautifulSoup(http_return.content, 'lxml')
     img_div = soup.find("div", {"id": "imgholder"}).find("img")['src']
