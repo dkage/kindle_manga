@@ -1,14 +1,10 @@
 import os
+from functions import get_full_path
 
 
-def get_full_path(series, chapter):
-    main_path = './tmp/'
-    series_dir = series + '/'
-
-    return main_path + series_dir + str(chapter)
-
-
-doctype = "<!DOCTYPE html><html>"
+# TODO this needs to be changed into functions or class
+doctype = "<!DOCTYPE html>" \
+          "     <html>"
 head_and_css = "<head>" \
                "    <link rel='stylesheet' href='../../css/manga.css'>" \
                "</head>"
