@@ -6,18 +6,40 @@ import requests
 base_url = 'https://www.mangareader.net'
 alphabetic_list = '/alphabetical'
 
-http_return = requests.get(base_url + alphabetic_list)
-soup = BeautifulSoup(http_return.content, 'lxml')
-series_columns = soup.find_all('div', {"class": "series_col"})
 
-series_array = []
-for column in series_columns:
-    lists = column.find_all('li')
-    for series in lists:
-        series_name = series.text if series.text[0] != ' ' else series.text[1::]
-        series_tuple = series_name, series.find('a')['href']
-        series_array.append(series_tuple)
-series_array.sort()
+def grab_all_series():
+    http_return = requests.get(base_url + alphabetic_list)
+    soup = BeautifulSoup(http_return.content, 'lxml')
+    series_columns = soup.find_all('div', {"class": "series_col"})
+
+    series_array = []
+    for column in series_columns:
+        lists = column.find_all('li')
+        for series in lists:
+            series_name = series.text if series.text[0] != ' ' else series.text[1::]
+            series_tuple = series_name.replace('[Completed]', '').replace(' [Completed]', ''), series.find('a')['href']
+            series_array.append(series_tuple)
+    series_array.sort()
+
+    return series_array
+
+
+def get_all_chapters(series_link):
+    chapters_array = []
+    series_url = base_url + series_link
+
+    http_return = requests.get(series_url)
+    soup = BeautifulSoup(http_return.content, 'lxml')
+    series_chapters = soup.find('table', {'id': 'listing'}).find_all('tr')
+
+    for chapter in series_chapters:
+        row = chapter.find_all('td')
+        print(row)
+        break
+
+    return chapters_array
+
 
 # TODO add function to save in database for further usage of data
-print(series_array)
+# print(grab_all_series())
+print(get_all_chapters('/bleach'))
