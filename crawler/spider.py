@@ -37,10 +37,12 @@ def get_all_chapters(series_link):
         # Each row has two TDs, first one contains href and chapter name, second has "date added" value
         row = chapter.find_all('td')
 
+        chapter_name = row[0].text.split(':')[1][1::]
+        chapter_href = row[0].find('a')['href']
+        chapter_date = row[1].text
 
-        print(row)
-
-        break
+        chapter_data = chapter_name, chapter_href, chapter_date
+        chapters_array.append(chapter_data)
 
     return chapters_array
 
