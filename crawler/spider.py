@@ -34,6 +34,7 @@ def get_all_chapters(series_link):
 
     # Skip first row using 1:: to ignore column headers
     for chapter in series_chapters[1::]:
+
         # Each row has two TDs, first one contains href and chapter name, second has "date added" value
         row = chapter.find_all('td')
 
