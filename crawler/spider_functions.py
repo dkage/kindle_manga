@@ -25,6 +25,10 @@ def grab_all_series():
 
 
 def get_all_chapters(series_link):
+    # TODO docstrings style comment later
+    # Function to grab all the chapters from a series. Receives as parameter '/series' path to add to base_url
+    # returns array with tuples containing in this exact order:
+    # chapter_name, chapter_path, date_chapter_was_added
     chapters_array = []
     series_url = base_url + series_link
 
@@ -48,6 +52,9 @@ def get_all_chapters(series_link):
     return chapters_array
 
 
-# TODO add function to save in database for further usage of data
+def grab_chapter_size():
+    # TODO create to track how many pages each chapter has to add to database
+    return True
+
 # print(grab_all_series())
 print(get_all_chapters('/bleach'))
