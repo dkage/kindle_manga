@@ -1,13 +1,12 @@
 from bs4 import BeautifulSoup
 import requests
 
-
-# First spider designed to crawl only mangareader (maybe add more sources later)
+# Spider functions designed to crawl only mangareader (maybe add more sources later [maybe scanlators])
 base_url = 'https://www.mangareader.net'
 alphabetic_list = '/alphabetical'
 
 
-def grab_all_series():
+def get_all_series():
     http_return = requests.get(base_url + alphabetic_list)
     soup = BeautifulSoup(http_return.content, 'lxml')
     series_columns = soup.find_all('div', {"class": "series_col"})
@@ -52,9 +51,18 @@ def get_all_chapters(series_link):
     return chapters_array
 
 
-def grab_chapter_size():
-    # TODO create to track how many pages each chapter has to add to database
-    return True
+def get_chapter_size(series_chapter):
 
-# print(grab_all_series())
-print(get_all_chapters('/bleach'))
+    # Grab how many pages a chapter has
+    http_return = requests.get(base_url + series_chapter)
+    soup = BeautifulSoup(http_return.content, 'lxml')
+
+    pages_number = soup.find('div', {'id': 'selectpage'}).text.split('of ')[1]
+    return pages_number
+
+
+# print(get_all_series())
+# print(get_all_chapters('/bleach'))
+
+# https://www.mangareader.net/bleach/34
+print(get_chapter_size('/bleach/34'))
