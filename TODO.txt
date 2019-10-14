@@ -1,0 +1,3 @@
+Add function to remove all tmp after usage (maybe run everyday at 00:00?)
+
+rm -r ./tmp/*
