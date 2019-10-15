@@ -1,5 +1,5 @@
 import os
-from functions import get_full_path
+from functions import get_full_path, check_dir
 
 # GENERATES HTML
 # TODO this needs to be changed into functions or class
@@ -24,8 +24,9 @@ body_end = "</body></html>"
 
 
 html_to_save = doctype + head_and_css + body_start + content + body_end
-
-html_file = open('./tmp/html/tmp.html', 'w')
+dir = './tmp/html/'
+check_dir(dir)
+html_file = open(dir + 'tmp.html', 'w')
 html_file.write(html_to_save)
 html_file.close()
 
