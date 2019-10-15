@@ -2,7 +2,6 @@ import requests
 import shutil
 from bs4 import BeautifulSoup
 import functions
-import sys
 
 # TODO make these inputs (web? DJANGO?)
 manga_reader_url = 'https://www.mangareader.net/'
