@@ -3,11 +3,11 @@ import shutil
 from bs4 import BeautifulSoup
 import functions
 
-# TODO make these inputs (web? DJANGO?)
+# TODO make these inputs via a DJANGO application
 manga_reader_url = 'https://www.mangareader.net/'
 manga_folder = 'tmp/'
 series = 'one-piece'
-chapter = '813'
+chapter = '820'
 
 manga_full_path = manga_folder + series + '/' + chapter + '/'
 functions.check_dir(manga_folder)
@@ -17,6 +17,7 @@ functions.check_dir(manga_full_path)
 full_url = manga_reader_url + series + '/' + chapter
 
 last_page = 1
+# TODO this needs to be changed when database is setup
 print('Counting how many pages chapter has.')
 while requests.get(full_url + '/' + str(last_page + 1)).status_code != 404:
     last_page = last_page + 1
