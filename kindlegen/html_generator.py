@@ -2,6 +2,16 @@ import os
 from functions import get_full_path, check_dir
 
 
+# To guarantee usage of CSS, it's better to insert it into an style tag.
+def grab_css():
+    with open('./../css/manga_html.css', 'r') as css_file:
+        css_properties = css_file.read().replace('\n', '')
+
+        style_tag = "<style>" + css_properties + "</style>"
+
+        return style_tag
+
+
 def html_gen(series_name, chapter_number):
     # GENERATES HTML to then transform into mobi type
     # TODO this needs to be changed into functions or class
@@ -9,9 +19,7 @@ def html_gen(series_name, chapter_number):
               "     <html>"
     # TODO CSS needs rework to improve image to screen size ratio (too many blank spaces around image)
     #  more trial and error needed
-    head_and_css = "<head>" \
-                   "    <link rel='stylesheet' href='../../css/manga_html.css'>" \
-                   "</head>"
+    head_and_css = "<head>" + grab_css() + "</head>"
     body_start = "<body>"
 
     content = "<div id='imgs_container'>"
@@ -29,7 +37,7 @@ def html_gen(series_name, chapter_number):
     html_file = open(tmp_dir + series + '_' + str(chapter) + '.html', 'w')
     html_file.write(html_to_save)
     html_file.close()
-
+    print('HTML file generated for:  ' + series + '_' + str(chapter))
     return True
 
 
