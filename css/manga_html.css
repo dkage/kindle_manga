@@ -1,4 +1,7 @@
+html{
+    background: black;
+}
+
 img {
-    max-width: 99%;
-    max-height: 99%;
+    min-width: 100%;
 }
