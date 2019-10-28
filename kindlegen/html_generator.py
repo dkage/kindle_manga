@@ -26,7 +26,7 @@ def html_gen(series_name, chapter_number):
     html_to_save = doctype + head_and_css + body_start + content + body_end
     tmp_dir = './tmp/html/'
     check_dir(tmp_dir)
-    html_file = open(tmp_dir + series + '-' + str(chapter) + '.html', 'w')
+    html_file = open(tmp_dir + series + '_' + str(chapter) + '.html', 'w')
     html_file.write(html_to_save)
     html_file.close()
 
