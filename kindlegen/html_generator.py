@@ -27,9 +27,9 @@ body_end = "</body></html>"
 
 
 html_to_save = doctype + head_and_css + body_start + content + body_end
-dir = './tmp/html/'
-check_dir(dir)
-html_file = open(dir + 'tmp.html', 'w')
+tmp_dir = './tmp/html/'
+check_dir(tmp_dir)
+html_file = open(tmp_dir + series + '-' + str(chapter) + '.html', 'w')
 html_file.write(html_to_save)
 html_file.close()
 
