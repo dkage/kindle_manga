@@ -2,3 +2,4 @@
 .DS_Store
 kindlegen/tmp/*
 config/postgres_conn.ini
+test.py
