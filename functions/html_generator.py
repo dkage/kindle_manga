@@ -1,10 +1,10 @@
 import os
-from functions import get_full_path, check_dir
+from functions.functions import get_full_path, check_dir
 
 
 # To guarantee usage of CSS, it's better to insert it into an style tag.
 def grab_css():
-    with open('./../css/manga_html.css', 'r') as css_file:
+    with open('../css/manga_html.css', 'r') as css_file:
         css_properties = css_file.read().replace('\n', '')
 
         style_tag = "<style>" + css_properties + "</style>"
