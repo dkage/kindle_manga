@@ -3,10 +3,16 @@ import requests
 
 # Spider functions designed to crawl only mangareader (maybe add more sources later [maybe scanlators])
 base_url = 'https://www.mangareader.net'
-alphabetic_list = '/alphabetical'
 
 
 def get_all_series():
+    """
+    Gets all series names that are available on mangareader.net
+
+    :return: A list of tuples, where each one contains two values:  ( <series_name>, <url>
+    """
+
+    alphabetic_list = '/alphabetical'
     http_return = requests.get(base_url + alphabetic_list)
     soup = BeautifulSoup(http_return.content, 'lxml')
     series_columns = soup.find_all('div', {"class": "series_col"})
@@ -24,10 +30,14 @@ def get_all_series():
 
 
 def get_all_chapters(series_link):
-    # TODO docstrings style comment later
-    # Function to grab all the chapters from a series. Receives as parameter '/series' path to add to base_url
-    # returns array with tuples containing in this exact order:
-    # chapter_name, chapter_path, date_chapter_was_added
+    """
+    Function to grab all the chapters from a series
+
+    :param series_link:  parameter as '/series' path to add to base_url
+    :return: returns array with a three items tuple containing in this exact order:
+                chapter_name, chapter_path, date_chapter_was_added
+    """
+
     chapters_array = []
     series_url = base_url + series_link
 
@@ -52,8 +62,11 @@ def get_all_chapters(series_link):
 
 
 def get_chapter_size(series_chapter):
+    """
+    :param series_chapter: receives '/series/1' url suffix.
+    :return: number of pages for that particular chapter
+    """
 
-    # Grab how many pages a chapter has
     http_return = requests.get(base_url + series_chapter)
     soup = BeautifulSoup(http_return.content, 'lxml')
 
@@ -62,7 +75,7 @@ def get_chapter_size(series_chapter):
 
 
 # print(get_all_series())
-# print(get_all_chapters('/bleach'))
+print(get_all_chapters('/bleach'))
 
 # https://www.mangareader.net/bleach/34
-print(get_chapter_size('/bleach/34'))
+# print(get_chapter_size('/bleach/34'))

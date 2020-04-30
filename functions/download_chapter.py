@@ -17,6 +17,7 @@ functions.check_dir(manga_full_path)
 full_url = manga_reader_url + series + '/' + chapter
 
 last_page = 1
+
 # TODO this needs to be changed when database is setup
 print('Counting how many pages chapter has.')
 while requests.get(full_url + '/' + str(last_page + 1)).status_code != 404:
