@@ -1,6 +1,8 @@
 import os
 
 
+# TODO is this useful?
+
 def check_dir(file_path):
     directory = os.path.dirname(file_path)
     if not os.path.exists(directory):

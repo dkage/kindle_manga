@@ -34,13 +34,8 @@ def html_gen(series_name, chapter_number):
     html_to_save = doctype + head_and_css + body_start + content + body_end
     tmp_dir = './tmp/html/'
     check_dir(tmp_dir)
-    html_file = open(tmp_dir + series + '_' + str(chapter) + '.html', 'w')
+    html_file = open(tmp_dir + series_name + '_' + str(chapter_number) + '.html', 'w')
     html_file.write(html_to_save)
     html_file.close()
-    print('HTML file generated for:  ' + series + '_' + str(chapter))
+    print('HTML file generated for:  ' + series_name + '_' + str(chapter_number))
     return True
-
-
-series = 'one-piece'
-chapter = 820
-html_gen(series, chapter)

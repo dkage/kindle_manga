@@ -12,8 +12,17 @@ def get_all_series():
     :return: A list of tuples, where each one contains two values:  ( <series_name>, <url>
     """
 
+    print('Grabbing series available on mangareader.net')
     alphabetic_list = '/alphabetical'
-    http_return = requests.get(base_url + alphabetic_list)
+
+    try:
+        http_return = requests.get(base_url + alphabetic_list)
+    except requests.exceptions.ConnectionError:
+        print('BAD HTTP request response. Is connection online?' + str())
+        return 'Error 001.1'
+
+    print('GOOD HTTP request response. Code: ' + str(http_return.status_code))
+
     soup = BeautifulSoup(http_return.content, 'lxml')
     series_columns = soup.find_all('div', {"class": "series_col"})
 
@@ -41,6 +50,7 @@ def get_all_chapters(series_link):
     chapters_array = []
     series_url = base_url + series_link
 
+    # TODO add requests error handling for bad conn
     http_return = requests.get(series_url)
     soup = BeautifulSoup(http_return.content, 'lxml')
     series_chapters = soup.find('table', {'id': 'listing'}).find_all('tr')
@@ -51,11 +61,12 @@ def get_all_chapters(series_link):
         # Each row has two TDs, first one contains href and chapter name, second has "date added" value
         row = chapter.find_all('td')
 
-        chapter_name = row[0].text.split(':')[1][1::]
+        chapter_number = row[0].text.split(': ', 1)[0].split(' ', 1)[1].strip()
+        chapter_name = row[0].text.split(':', 1)[1].strip()
         chapter_href = row[0].find('a')['href']
         chapter_date = row[1].text
 
-        chapter_data = chapter_name, chapter_href, chapter_date
+        chapter_data = chapter_number, chapter_name, chapter_href, chapter_date
         chapters_array.append(chapter_data)
 
     return chapters_array
@@ -67,15 +78,9 @@ def get_chapter_size(series_chapter):
     :return: number of pages for that particular chapter
     """
 
+    # TODO add requests error handling for bad conn 2
     http_return = requests.get(base_url + series_chapter)
     soup = BeautifulSoup(http_return.content, 'lxml')
 
     pages_number = soup.find('div', {'id': 'selectpage'}).text.split('of ')[1]
     return pages_number
-
-
-# print(get_all_series())
-print(get_all_chapters('/bleach'))
-
-# https://www.mangareader.net/bleach/34
-# print(get_chapter_size('/bleach/34'))

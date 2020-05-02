@@ -1,0 +1,2 @@
+Error 001: Bad connection during requests
+      001.1: Function get_all_series
