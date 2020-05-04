@@ -1,15 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
 import shutil
-from functions import functions
+from functions.misc import *
 from defines import *
-import sys
 
 
-# Spider functions designed to crawl only mangareader (maybe add more sources later [maybe scanlators])
-
-
-
+# Spider scraper functions designed to crawl only mangareader (maybe add more sources later [maybe scanlators])
 def get_all_series():
     """
     Gets all series names that are available on mangareader.net
@@ -95,28 +91,29 @@ def get_chapter_size(series_name, series_chapter):
 
 def download_chapter(series_name, series_chapter):
 
-    manga_full_path = TEMP_DIR + '/' + series_name + '/' + str(series_chapter) + '/'
+    manga_full_path = get_chapter_full_path(series_name, series_chapter)
     full_url = BASE_URL + '/' + series_name + '/' + str(series_chapter)
 
     # Check if directories exist, if false, they are created.
-    functions.check_dir(TEMP_DIR)
-    functions.check_dir(TEMP_DIR + '/' + series_name)
-    functions.check_dir(manga_full_path)
+    check_dir(TEMP_DIR)
+    check_dir(TEMP_DIR + '/' + series_name)
+    check_dir(manga_full_path)
 
     # Check number of pages chapter has, each will be requested individually
     last_page = get_chapter_size(series_name, series_chapter)
     print('This ' + series_name + ' chapter has ' + str(last_page) + ' pages')
 
     for page in range(1, int(last_page) + 1):
-        print('Downloading -' + series_name + ' chapter ' + str(series_chapter) + ' - PAGE ' + str(page))
+        print('Downloading - ' + series_name.upper() + ' chapter ' + str(series_chapter) + ' - PAGE ' + str(page))
+
         http_return = requests.get(full_url + '/' + str(page))
         soup = BeautifulSoup(http_return.content, 'lxml')
         img_div = soup.find("div", {"id": "imgholder"}).find("img")['src']
 
         img_request = requests.get(img_div, stream=True)
-        with open(manga_full_path + str(page) + '.jpg', 'wb') as out_file:
+        with open(manga_full_path + '/' + str(page) + '.jpg', 'wb') as out_file:
             shutil.copyfileobj(img_request.raw, out_file)
 
     print('Chapter downloaded successfully.')
 
-    return 'Done'
+    return True
