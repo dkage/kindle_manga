@@ -7,6 +7,9 @@ from defines import *
 import os
 
 
+series = 'naruto'
+chapter = '382'
+
 # print(spider.get_all_series())
 # print(spider.get_all_chapters('/naruto'))
 
@@ -17,8 +20,7 @@ import os
 # spider.download_chapter('naruto', '382')
 #
 
-series = 'naruto'
-chapter = '382'
+
 # html_generator.html_gen(series, chapter)
 
 # print(html_generator.grab_css())
@@ -31,3 +33,4 @@ chapter = '382'
 
 # html_generator.html_gen(series_name, chapter_number)
 kindle.generate_mobi(series, chapter)
+
