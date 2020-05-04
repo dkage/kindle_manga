@@ -1,5 +1,5 @@
 .idea/
 .DS_Store
-kindlegen/tmp/*
+tmp/
 config/postgres_conn.ini
 test.py

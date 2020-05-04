@@ -38,4 +38,5 @@ def html_gen(series_name, chapter_number):
     html_file.write(html_to_save)
     html_file.close()
     print('HTML file generated for:  ' + series_name + '_' + str(chapter_number))
+
     return True

@@ -3,10 +3,9 @@ import os
 
 # TODO is this useful?
 
-def check_dir(file_path):
-    directory = os.path.dirname(file_path)
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+def check_dir(dir_path):
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
 
 
 def get_full_path(series, chapter):
