@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
+    # Django default
     path('admin/', admin.site.urls),
-    path('', include('core.urls'))
+
+    # Apps
+    path('', include('core.urls')),
 ]

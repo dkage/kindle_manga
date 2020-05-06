@@ -8,7 +8,7 @@ import os
 def grab_css():
     # TODO CSS needs rework to improve image to screen size ratio (too many blank spaces around image)
     #  more trial and error needed
-    with open('../css/manga_gen.css', 'r') as css_file:
+    with open('../static/css/manga_gen.css', 'r') as css_file:
         css_properties = css_file.read().replace('\n', '')
         style_tag = "<style> " + css_properties + " </style>"
 
