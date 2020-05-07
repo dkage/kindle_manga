@@ -3,3 +3,4 @@
 tmp/
 config/postgres_conn.ini
 test.py
+*/resources.txt

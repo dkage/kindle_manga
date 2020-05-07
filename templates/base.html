@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/png" />
-    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <link rel="stylesheet" href="{% static 'css/base.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
@@ -22,7 +22,7 @@
     <div class="navbar-static-top">
         <nav id="top-nav">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Logo</a>
+                <a href="#" class="brand-logo">KM_DK</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="https://www.google.com"><i class="fa fa-question-circle"></i></a></li>
                     <li><a href="https://www.google.com"><i class="fa fa-cog"></i></a></li>
@@ -33,39 +33,78 @@
     </div>
 
     <ul class="sidenav sidenav-fixed" id="sidenav-left">
-        <li>
-            <a href="" class="brand-logo">TEST</a>
+        <li id="sidebar-title">
+            <a href="" class="">Kindle Manga</a>
         </li>
         <li class="no-padding">
-            <ul class="collapsible collapsible-accordion">
+            <ul id="menu-list" class="collapsible collapsible-accordion">
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                    <div class="collapsible-header"><i class="material-icons">check_box</i>Subscriptions</div>
+                    <div class="collapsible-body"><span>My subscriptions</span></div>
+                    <div class="collapsible-body"><span>Status</span></div>
+                </li>
+                <li>
+                    {# TODO ADD SPACING HERE SOMEHOW #}
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Hot</div>
+                    <div class="collapsible-body"><span>All Time</span></div>
+                    <div class="collapsible-body"><span>Month</span></div>
+                    <div class="collapsible-body"><span>Week</span></div>
+                </li>
+                <li>
+                    {# TODO needs to be a button with no collapse, but that hide others collapsable if clicked #}
+                    <div class="collapsible-header"><i class="material-icons">search</i>Search</div>
                     <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
                 </li>
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    <div class="collapsible-header"><i class="material-icons">help</i>About</div>
+                    <div class="collapsible-body"><span>This project</span></div>
+                    <div class="collapsible-body"><span>Contact</span></div>
                 </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-
             </ul>
+        </li>
+        <li id="side-footer">
+            PLACEHOLDER
         </li>
     </ul>
 
-    <div></div>
+
 
 </header>
+<div id="main">
+    <div id="content" class="container">
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        <h1>test</h1>
+        {% block content %}
+        {% endblock %}
 
-<div id="content" class="container">
-
-    {% block content %}
-    {% endblock %}
-
+    </div>
 </div>
-
 </body>
 <script src="{% static 'js/main.js' %}"></script>
 </html>

@@ -6,16 +6,27 @@ body, ul, li, p {
     flex-direction: column;
 }
 
-.navbar-static-top, #content {
-    padding-left: 300px;
-}
-
 #top-nav {
     background: black !important;
+    height: 70px;
     justify-content: center;
+    align-content: center;
     padding: 0 20px 0 20px;
 }
 
-header {
+#nav-mobile {
+    display: block;
 }
 
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
+body {
+    background: #fff;
+}

@@ -1,0 +1,62 @@
+body, ul, li, p {
+    list-style: none;
+    font-size: 1.2rem;
+    font-family: Roboto, serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-static-top, #content {
+    padding-left: 300px;
+}
+
+#nav-mobile {
+    display: block;
+}
+
+#top-nav {
+    background: black !important;
+    height: 70px;
+    justify-content: center;
+    align-content: center;
+    padding: 0 20px 0 20px;
+}
+
+#sidebar-title {
+    color: white;
+    background: darkgray;
+    height: 70px;
+}
+
+#sidebar-title > a {
+    height: 70px;
+    justify-content: center;
+}
+
+#sidenav-left {
+    height: 100%;
+}
+
+#main {
+}
+
+header {
+}
+
+#menu-list {
+
+}
+
+#menu-list > li > div {
+    padding: 5px 10px 5px 30px;
+}
+
+#side-footer{
+    position: fixed;
+    bottom: 0;
+    background: black;
+    color: white;
+    width: 300px;
+    justify-content: center;
+    padding-left: 50px;
+}
