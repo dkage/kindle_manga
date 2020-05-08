@@ -1,4 +1,3 @@
-{# This base file is used as a template for SIGNUP and SIGNIN #}
 <!DOCTYPE html>
 {% load static %}
 
@@ -15,29 +14,39 @@
 
     <title>Kindle Manga - Sign Page</title>
 
+    <style type="text/css">
+        body {
+            background-image: url("/static/img/main_bg.png");
+            background-size: cover;
+
+        }
+
+        .login{
+            margin-top: 100px;
+        }
+
+        .login .card {
+            background: rgba(0,0,0,.8);
+            font-size: 16px;
+
+        }
+        input{
+            color: white;
+        }
+
+        #title-form {
+            text-align: center;
+        }
+
+    </style>
 </head>
 
 <body>
-<header>
-    <div class="navbar-static-top">
-        <nav id="top-nav">
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo">KM_DK</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="https://www.google.com"><i class="fa fa-question-circle"></i></a></li>
-                    <li><a href="https://www.google.com"><i class="fa fa-cog"></i></a></li>
-                    <li><a href="https://www.google.com"><i class="fa fa-user"></i></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-
 
 <div class="row login">
     <div class="col s12 14 offset-14">
         <div class="card">
-            <div id="title-form" class="card-action teal white-text">
+            <div id="title-form" class="card-action red white-text">
                 <h3>Login</h3>
             </div>
 
@@ -47,18 +56,16 @@
                     <input type="text" id="username">
                 </div>
                 <div class="form-field">
-                    <label for="password">Password</label>
+                    <label for="password">Username</label>
                     <input type="password" id="password">
                 </div>
-                <div id="div-remember" class="form-field">
-                    <label>
-                        <input type="checkbox">
-                        <span><label for="remember">Remember me</label></span>
-                    </label>
+                <div class="form-field">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
                 </div>
 
                 <div class="form-field center-align">
-                    <button class="btn-large teal">Login</button>
+                    <button class="btn-large red">Login</button>
                 </div>
             </div>
 
@@ -66,9 +73,8 @@
     </div>
 </div>
 
-</body>
-<script src="{% static 'js/main.js' %}"></script>
 
+</body>
 
 
 </html>

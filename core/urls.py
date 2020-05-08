@@ -6,5 +6,6 @@ urlpatterns = [
     path('index', core.index),
 
     path('register', core.register, name='register'),
-    path('login', core.login, name='login')
+    path('login', core.login, name='login'),
+    path('test', core.test, name='test'),
 ]
