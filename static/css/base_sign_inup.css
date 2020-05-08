@@ -23,10 +23,41 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-image: url("/static/img/main_bg.png");
+    background-size: cover;
 }
 main {
     flex: 1 0 auto;
 }
-body {
-    background: #fff;
+
+label{
+    color: white;
+    font-size: 15px;
+    font-family: "Apple Braille", serif;
+}
+
+input{
+    color: lightgray;
+    font-family: Roboto, serif;
+}
+
+.login{
+    margin-top: 100px;
+}
+
+.login .card {
+    background: rgba(0,0,0,.8);
+    font-size: 16px;
+}
+
+#remember-checkbox > input{
+    opacity: 1;
+}
+
+#title-form {
+    text-align: center;
+}
+
+#div-remember{
+    padding-bottom: 40px;
 }
