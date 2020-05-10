@@ -1,6 +1,12 @@
 {% extends 'base_sign_inup.html' %}
 
+{% block page_title %} Sign Up {% endblock %}
 
-{% block sign_form %}
+{% block h3_title %} Register new account {% endblock %}
+
+
+{% block form_data %}
+    {% csrf_token %}
+    {{ user_form.as_p }}
 
 {% endblock %}

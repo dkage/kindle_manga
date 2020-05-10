@@ -13,7 +13,7 @@
           integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons"><link rel = "stylesheet">
 
-    <title>Kindle Manga - Sign Page</title>
+    <title>Kindle Manga - {% block page_title %} {% endblock %}</title>
 
 </head>
 
@@ -38,30 +38,42 @@
     <div class="col s12 14 offset-14">
         <div class="card">
             <div id="title-form" class="card-action teal white-text">
-                <h3>Login</h3>
+                <h3>
+                    {% block h3_title %}
+                    {% endblock %}
+                </h3>
             </div>
 
-            <div class="card-content">
-                <div class="form-field">
-                    <label for="username">Username</label>
-                    <input type="text" id="username">
-                </div>
-                <div class="form-field">
-                    <label for="password">Password</label>
-                    <input type="password" id="password">
-                </div>
-                <div id="div-remember" class="form-field">
-                    <label>
-                        <input type="checkbox">
-                        <span><label for="remember">Remember me</label></span>
-                    </label>
-                </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="card-content">
 
-                <div class="form-field center-align">
-                    <button class="btn-large teal">Login</button>
-                </div>
-            </div>
+                    {% block form_data %}
+                    {% endblock %}
 
+{#                    <div class="form-field">#}
+{#                        <label for="username">Username</label>#}
+{#                        <input type="text" id="username">#}
+{#                    </div>#}
+
+{#                    <div class="form-field">#}
+{#                        <label for="password">Password</label>#}
+{#                        <input type="password" id="password">#}
+{#                    </div>#}
+
+{#                    <div id="div-remember" class="form-field">#}
+{#                        <label>#}
+{#                            <input type="checkbox">#}
+{#                            <span><label for="remember">Remember me</label></span>#}
+{#                        </label>#}
+{#                    </div>#}
+
+                    <div class="form-field center-align">
+                        <input class="btn-large teal" type="submit" name="" value="register">
+                        <button class="btn-large teal">Login</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
