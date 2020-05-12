@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register - Success</title>
-</head>
-<body>
+{% extends 'base_sign_inup.html' %}
 
-<h1>reg success</h1>
+{% block page_title %} Account created! {% endblock %}
+{% block h3_title %} Success! {% endblock %}
 
-
-</body>
-</html>
+{% block form_data %}
+    <p>Your account has been created.</p>
+    <br><br>
+{#    TODO make login button clickable#}
+    <p> You can now login.</p>
+{% endblock %}

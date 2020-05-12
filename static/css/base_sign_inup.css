@@ -30,10 +30,15 @@ main {
     flex: 1 0 auto;
 }
 
-label{
+p, label{
     color: white;
     font-size: 15px;
+    font-weight: bold;
     font-family: "Apple Braille", serif;
+}
+
+p {
+    text-align: center;
 }
 
 input{

@@ -29,6 +29,10 @@ def register(request):
     return render(request, 'register.html', {'user_form': user_form})
 
 
+def account_success(request):
+    return render(request, 'account_success.html')
+
+
 def login(request):
     return render(request, 'login.html')
 

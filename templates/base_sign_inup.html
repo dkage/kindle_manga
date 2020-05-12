@@ -3,6 +3,8 @@
 {% load static %}
 
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/png" />
@@ -14,15 +16,16 @@
     <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons"><link rel = "stylesheet">
 
     <title>Kindle Manga - {% block page_title %} {% endblock %}</title>
-
 </head>
 
+
 <body>
+
 <header>
     <div class="navbar-static-top">
         <nav id="top-nav">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">KM_DK</a>
+                <a href="{% url 'index' %}" class="brand-logo">KM_DK</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="https://www.google.com"><i class="fa fa-question-circle"></i></a></li>
                     <li><a href="https://www.google.com"><i class="fa fa-cog"></i></a></li>
@@ -51,27 +54,6 @@
                     {% block form_data %}
                     {% endblock %}
 
-{#                    <div class="form-field">#}
-{#                        <label for="username">Username</label>#}
-{#                        <input type="text" id="username">#}
-{#                    </div>#}
-
-{#                    <div class="form-field">#}
-{#                        <label for="password">Password</label>#}
-{#                        <input type="password" id="password">#}
-{#                    </div>#}
-
-{#                    <div id="div-remember" class="form-field">#}
-{#                        <label>#}
-{#                            <input type="checkbox">#}
-{#                            <span><label for="remember">Remember me</label></span>#}
-{#                        </label>#}
-{#                    </div>#}
-
-                    <div class="form-field center-align">
-                        <input class="btn-large teal" type="submit" name="" value="register">
-                        <button class="btn-large teal">Login</button>
-                    </div>
                 </div>
             </form>
         </div>
