@@ -10,4 +10,6 @@ urlpatterns = [
     path('login', core.login, name='login'),
     path('test', core.test, name='test'),
 
+    path('dashboard', core.dashboard),
+
 ]

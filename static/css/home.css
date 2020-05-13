@@ -1,0 +1,24 @@
+body, ul, li, p {
+    list-style: none;
+    font-size: 1.2rem;
+    font-family: Roboto, serif;
+    display: flex;
+    flex-direction: column;
+}
+
+#top-nav {
+    background: #a88bf8 !important;
+    height: 70px;
+    justify-content: center;
+    align-content: center;
+    padding: 0 20px 0 20px;
+    color: #70aef9;
+}
+
+#nav-mobile {
+    display: block;
+}
+
+body{
+    background: #31343f;
+}
