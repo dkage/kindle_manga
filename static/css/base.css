@@ -6,6 +6,11 @@ body, ul, li, p {
     flex-direction: column;
 }
 
+body {
+    background: var(--background-color);
+    color: white;
+}
+
 .navbar-static-top, #content {
     padding-left: 300px;
 }
@@ -34,6 +39,7 @@ body, ul, li, p {
 }
 
 #sidenav-left {
+    background: var(--background-color);
     height: 100%;
 }
 
@@ -58,4 +64,17 @@ header {
     width: 300px;
     justify-content: center;
     padding-left: 50px;
+}
+
+.collapsible-header {
+    background: var(--color-light-cards) !important;
+    border-radius: 30px;
+    margin: 10px 0 10px 0;
+
+}
+
+.collapsible-body {
+    background: var(--color-secondary) !important;
+    border-radius: 30px;
+    margin: 10px 0 10px 0;
 }

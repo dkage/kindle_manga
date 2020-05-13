@@ -7,12 +7,11 @@ body, ul, li, p {
 }
 
 #top-nav {
-    background: #a88bf8 !important;
+    background: #000000 !important;
     height: 70px;
     justify-content: center;
     align-content: center;
     padding: 0 20px 0 20px;
-    color: #70aef9;
 }
 
 #nav-mobile {
@@ -20,5 +19,9 @@ body, ul, li, p {
 }
 
 body{
-    background: #31343f;
+    background: var(--background-color);
+}
+
+a {
+    color: var(--color-primary);
 }
