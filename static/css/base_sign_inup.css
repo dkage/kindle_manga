@@ -32,7 +32,7 @@ main {
 
 p, label{
     color: gray;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     font-family: "Apple Braille", serif;
 }
@@ -67,15 +67,23 @@ input{
     padding-bottom: 40px;
 }
 
-.card-content > ul > li {
-    font-size: 10px;
+.card-content > ul:first-of-type > li {
+    font-size: 12px;
     color: white;
 }
 
 .errorlist {
     color: red !important;
+    font-size: 12px;
 }
 
 #submit_button {
+    margin-top: 20px;
     border-radius: 20px !important;
+    background-color: var(--color-secondary) !important;
+    /*    Change button fonts*/
+}
+
+#title-form {
+    /*background-color: teal !important;*/
 }
