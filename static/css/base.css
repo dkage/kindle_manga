@@ -50,6 +50,7 @@ header {
 }
 
 #menu-list {
+    padding: 30px;
 }
 
 #menu-list > li > div {
@@ -77,4 +78,15 @@ header {
     background: var(--color-secondary) !important;
     border-radius: 30px;
     margin: 10px 0 10px 0;
+}
+
+.menu-buttons {
+    padding: 30px !important;
+}
+
+@media screen and
+(max-device-width: 1000px){
+    .navbar-static-top, #content {
+        padding: 0;
+    }
 }

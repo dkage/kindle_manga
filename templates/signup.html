@@ -2,14 +2,14 @@
 
 {% block page_title %} Sign Up {% endblock %}
 
-{% block h3_title %} Register new account {% endblock %}
+{% block h4_title %} Register new account {% endblock %}
 
 
 {% block form_data %}
     {% csrf_token %}
     {{ user_form.as_p }}
     <div class="form-field center-align">
-        <input class="btn-large teal" type="submit" name="" value="register">
+        <input id="submit_button" class="btn-large teal" type="submit" name="" value="register">
     </div>
 
 {% endblock %}

@@ -31,8 +31,8 @@ main {
 }
 
 p, label{
-    color: white;
-    font-size: 15px;
+    color: gray;
+    font-size: 10px;
     font-weight: bold;
     font-family: "Apple Braille", serif;
 }
@@ -47,7 +47,7 @@ input{
 }
 
 .login{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .login .card {
@@ -65,4 +65,17 @@ input{
 
 #div-remember{
     padding-bottom: 40px;
+}
+
+.card-content > ul > li {
+    font-size: 10px;
+    color: white;
+}
+
+.errorlist {
+    color: red !important;
+}
+
+#submit_button {
+    border-radius: 20px !important;
 }

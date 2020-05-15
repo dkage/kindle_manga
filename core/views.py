@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import UserProfileForm
-from secrets import compare_digest
+from django.contrib.auth import authenticate, login
+
+from core.forms import SignUpForm
 
 
 def index(request):
@@ -11,26 +12,19 @@ def dashboard(request):
     return render(request, 'dashboard.html')
 
 
-def register(request):
-
-    registered = False
-
+def signup(request):
     if request.method == 'POST':
-        user_form = UserProfileForm(request.POST)
-
-        if user_form.is_valid():
-            if not compare_digest(user_form.password, user_form.password_confirm):
-                raise user_form.ValidationError('Your passwords do not match', code='invalid')
-            else:
-                user = user_form.save()
-                user.set_password(user.password)
-                user.save()
-
-                return redirect('account_created')
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
     else:
-        user_form = UserProfileForm()
-
-    return render(request, 'register.html', {'user_form': user_form})
+        form = SignUpForm()
+    return render(request, 'signup.html', {'user_form': form})
 
 
 def account_success(request):
