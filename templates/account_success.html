@@ -1,11 +1,16 @@
 {% extends 'base_sign_inup.html' %}
 
 {% block page_title %} Account created! {% endblock %}
-{% block h3_title %} Success! {% endblock %}
+
+
+{% block h4_title %} Success! {% endblock %}
 
 {% block form_data %}
     <p>Your account has been created.</p>
     <br><br>
-{#    TODO make login button clickable#}
-    <p> You can now login.</p>
+    <p style="text-decoration: underline"> You are now logged in.</p>
+
+    <br><br>
+
+    <input type="button" class="btn purple" value="Go to my Dashboard" onclick="location.href='{% url 'home' %}';">
 {% endblock %}
