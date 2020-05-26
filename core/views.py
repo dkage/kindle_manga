@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 from core.forms import SignUpForm, SignInForm
 
@@ -8,11 +9,16 @@ def index(request):
     return render(request, 'index.html')
 
 
+@login_required(login_url='signin')
 def dashboard(request):
     return render(request, 'dashboard.html')
 
 
 def signup(request):
+
+    if request.user.is_authenticated:
+        return render(request, 'dashboard.html')
+
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         print(form)
@@ -33,6 +39,8 @@ def account_success(request):
 
 
 def signin(request):
+    if request.user.is_authenticated:
+        return render(request, 'dashboard.html')
 
     if request.method == 'POST':
         print(request.POST)
