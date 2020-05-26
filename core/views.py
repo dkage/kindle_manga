@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
-from core.forms import SignUpForm
+from core.forms import SignUpForm, SignInForm
 
 
 def index(request):
@@ -15,6 +15,7 @@ def dashboard(request):
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
+        print(form)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -32,7 +33,20 @@ def account_success(request):
 
 
 def signin(request):
-    return render(request, 'login.html')
+
+    if request.method == 'POST':
+        print(request.POST)
+        form = SignInForm(data=request.POST)
+        print(form)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = SignInForm()
+    return render(request, 'signin.html', {'signin_form': form})
 
 
 def test(request):
