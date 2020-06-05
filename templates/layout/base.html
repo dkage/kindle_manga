@@ -1,137 +1,28 @@
 <!DOCTYPE html>
-{% load static %}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/png" />
-    <link rel="stylesheet" href="{% static 'css/theme.css'%}">
-    <link rel="stylesheet" href="{% static 'css/font_faces.css'%}">
-    <link rel="stylesheet" href="{% static 'css/base.css'%}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-          integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons"><link rel = "stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
+            integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd"
+            crossorigin="anonymous"></script>
 
 
-    <title>Kindle Manga</title>
+    <title>{% block title %}{% endblock %}</title>
 
 </head>
-<body class="has-fixed-sidenav">
 
-<header>
-    <div class="navbar-static-top">
-        <nav id="top-nav">
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo">KM_DK</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="https://www.google.com"><i class="fa fa-question-circle"></i></a></li>
-                    <li><a href="https://www.google.com"><i class="fa fa-cog"></i></a></li>
-                    <li><a href="https://www.google.com"><i class="fa fa-user"></i></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-    <ul class="sidenav sidenav-fixed hide-on-med-and-down" id="sidenav-left">
-        <li id="sidebar-title">
-            <a href="" class="">Kindle Manga</a>
-        </li>
-        <li class="no-padding menu-buttons">
-            <ul id="menu-list" class="collapsible collapsible-accordion">
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">check_box</i>Subscriptions</div>
-                    <div class="collapsible-body"><span>My subscriptions</span></div>
-                    <div class="collapsible-body"><span>Status</span></div>
-                </li>
-                <li>
-                    {# TODO ADD SPACING HERE SOMEHOW #}
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Hot</div>
-                    <div class="collapsible-body"><span>All Time</span></div>
-                    <div class="collapsible-body"><span>Month</span></div>
-                    <div class="collapsible-body"><span>Week</span></div>
-                </li>
-                <li>
-                    {# TODO needs to be a button with no collapse, but that hide others collapsable if clicked #}
-                    <div class="collapsible-header"><i class="material-icons">search</i>Search</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">help</i>About</div>
-                    <div class="collapsible-body"><span>This project</span></div>
-                    <div class="collapsible-body"><span>Contact</span></div>
-                </li>
-            </ul>
-        </li>
-        <li id="side-footer">
-            PLACEHOLDER
-        </li>
-    </ul>
-
-
-
-</header>
-<div id="main">
-    <div id="content" class="container">
-        <h1>test</h1>
-        <p>
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id eros elementum, dictum leo tristique,
-            sodales libero.
-            Nullam auctor quis quam ut sodales. Suspendisse placerat eu velit consectetur pellentesque.
-            Suspendisse quis tortor ut quam aliquam posuere. Quisque sit amet nunc quis purus posuere ornare.
-            Nunc velit est, egestas id rhoncus et, mattis at dui. In malesuada diam nec laoreet sagittis.
-            Nulla volutpat, massa sed sollicitudin placerat, mauris lacus gravida nisl, sit amet fringilla purus
-            augue vel velit. Praesent odio est, dapibus nec commodo vel, tempus ac ante. Pellentesque nec ultrices mi,
-            at iaculis nulla. Pellentesque sollicitudin, mauris non eleifend ullamcorper, enim velit eleifend nisl,
-            vitae mollis massa nibh at arcu. Donec vel lorem id mi rhoncus scelerisque at non lorem. Ut facilisis
-            aliquam leo. Quisque a velit auctor, auctor libero at, ultricies lacus. Curabitur eleifend erat eros,
-            eu tempus magna ultrices id. Vestibulum a molestie enim, id consequat eros.
-
-
-            Praesent non augue sem. Nulla quis lacus quis erat ultricies scelerisque id at ex.
-            Sed a erat dui. Maecenas molestie mi lacus, non accumsan justo maximus ac.
-            Aliquam laoreet et mauris in ornare. Mauris sed cursus sem. Aenean eu imperdiet nunc.
-            Curabitur lectus massa, laoreet nec nunc a, molestie sagittis tortor. Morbi tincidunt nisi efficitur,
-            fringilla purus vel, laoreet urna. Suspendisse vitae mollis nunc. Integer convallis rutrum ipsum ac congue.
-            Donec eu urna sed eros dictum sollicitudin vitae vel ex. In finibus nunc sit amet consectetur venenatis.
-            Vestibulum ac porta tellus.
-
-            Fusce rhoncus ut massa sodales fermentum. Phasellus vel libero id tortor pharetra hendrerit ac cursus
-            nulla. Suspendisse interdum tincidunt porttitor. Praesent rhoncus eget odio nec cursus. Fusce vitae
-            bibendum ante. Ut feugiat rutrum ante sit amet efficitur. Aliquam sodales venenatis lacus. Fusce
-            congue mollis lectus. Mauris gravida feugiat risus ac aliquam. Nulla quis lectus diam. Nam eget diam luctus,
-            venenatis odio eget, semper ipsum. In viverra magna quis facilisis egestas. Suspendisse non augue facilisis,
-            vehicula mauris et, mattis sapien. Nulla vel turpis mauris. Aliquam scelerisque metus odio, eget porta est
-            ultrices finibus. Aenean in viverra leo.
-
-            Aliquam accumsan erat elit, et egestas tortor aliquam non. Cras nec nunc finibus, blandit nisi et,
-            mattis massa. Nunc id nisi orci. Integer cursus vestibulum nulla ut mattis. Nam accumsan,
-            nisi hendrerit dignissim malesuada, tellus risus aliquam libero, a consectetur elit ex et nunc.
-            Sed id leo tincidunt, lacinia purus id, eleifend arcu. Nulla sit amet porttitor purus. Sed dapibus
-            semper mollis. Nulla enim purus, venenatis vel varius et, eleifend sit amet augue.
-            Proin dignissim est efficitur massa lacinia volutpat. Sed sit amet tempor mi, vel dignissim orci.
-            Donec quis nulla semper, porttitor ex eu, dignissim est. Sed enim erat, malesuada et libero eget,
-            posuere feugiat ex. Vestibulum porttitor neque ante, at semper arcu feugiat sit amet.
-            Curabitur mi nisi, euismod ac euismod auctor, euismod at eros.
-
-            Aliquam erat volutpat. Nullam tristique turpis a nunc tincidunt venenatis.
-            Donec commodo massa non egestas varius. Proin mollis ligula metus, vitae facilisis nibh blandit
-            elementum. Nunc in semper leo. Nulla interdum purus quis ipsum elementum ornare.
-            Phasellus interdum dui vel erat tincidunt tincidunt. Aenean varius quis eros quis pharetra. Sed eget
-            eros suscipit, mattis mi eget, gravida augue. Nullam non ornare sapien, nec pharetra ex.
-            Vivamus sit amet nulla ullamcorper, commodo dui et, finibus magna. Maecenas id aliquet turpis.
-            Pellentesque laoreet malesuada imperdiet. Pellentesque velit risus, mattis ut tellus ac,
-            sagittis accumsan risus. Proin a purus auctor, commodo diam sit amet, accumsan purus.
-            Duis in mattis nisl. </p>
-        {% block content %}
-        {% endblock %}
-
-    </div>
-</div>
+<body>
+{% block html_body %}
+{% endblock %}
 </body>
-<script src="{% static 'js/main.js' %}"></script>
 </html>

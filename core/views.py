@@ -6,18 +6,18 @@ from core.forms import SignUpForm, SignInForm
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index_old.html')
 
 
 @login_required(login_url='signin')
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    return render(request, 'dashboard_old.html')
 
 
 def signup(request):
 
     if request.user.is_authenticated:
-        return render(request, 'dashboard.html')
+        return render(request, 'dashboard_old.html')
 
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -31,16 +31,16 @@ def signup(request):
             return redirect('account_success')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'user_form': form})
+    return render(request, 'signup_old.html', {'user_form': form})
 
 
 def account_success(request):
-    return render(request, 'account_success.html')
+    return render(request, 'account_success_old.html')
 
 
 def signin(request):
     if request.user.is_authenticated:
-        return render(request, 'dashboard.html')
+        return render(request, 'dashboard_old.html')
 
     if request.method == 'POST':
         print(request.POST)
@@ -54,7 +54,7 @@ def signin(request):
             return redirect('home')
     else:
         form = SignInForm()
-    return render(request, 'signin.html', {'signin_form': form})
+    return render(request, 'signin_old.html', {'signin_form': form})
 
 
 def test(request):
