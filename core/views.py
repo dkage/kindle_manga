@@ -6,7 +6,7 @@ from core.forms import SignUpForm, SignInForm
 
 
 def index(request):
-    return render(request, 'index_old.html')
+    return render(request, 'index.html')
 
 
 @login_required(login_url='signin')

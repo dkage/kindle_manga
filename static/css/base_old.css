@@ -1,0 +1,92 @@
+body, ul, li, p {
+    list-style: none;
+    font-size: 1.2rem;
+    font-family: Montserrat, serif;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background: var(--background-color);
+    color: white;
+}
+
+.navbar-static-top, #content {
+    padding-left: 300px;
+}
+
+#nav-mobile {
+    display: block;
+}
+
+#top-nav {
+    background: black !important;
+    height: 70px;
+    justify-content: center;
+    align-content: center;
+    padding: 0 20px 0 20px;
+}
+
+#sidebar-title {
+    color: white;
+    background: #42a964;
+    height: 70px;
+}
+
+#sidebar-title > a {
+    height: 70px;
+    justify-content: center;
+}
+
+#sidenav-left {
+    background: var(--background-color);
+    height: 100%;
+}
+
+#main {
+}
+
+header {
+}
+
+#menu-list {
+    padding: 30px;
+}
+
+#menu-list > li > div {
+    padding: 5px 10px 5px 30px;
+}
+
+#side-footer{
+    position: fixed;
+    bottom: 0;
+    background: black;
+    color: white;
+    width: 300px;
+    justify-content: center;
+    padding-left: 50px;
+}
+
+.collapsible-header {
+    background: var(--color-light-cards) !important;
+    border-radius: 30px;
+    margin: 10px 0 10px 0;
+
+}
+
+.collapsible-body {
+    background: var(--color-secondary) !important;
+    border-radius: 30px;
+    margin: 10px 0 10px 0;
+}
+
+.menu-buttons {
+    padding: 30px !important;
+}
+
+@media screen and
+(max-width: 1000px){
+    .navbar-static-top, #content {
+        padding: 0;
+    }
+}
