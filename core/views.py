@@ -40,7 +40,7 @@ def account_success(request):
 
 def signin(request):
     if request.user.is_authenticated:
-        return render(request, 'dashboard_old.html')
+        return render(request, 'index.html')
 
     if request.method == 'POST':
         print(request.POST)
@@ -54,7 +54,7 @@ def signin(request):
             return redirect('home')
     else:
         form = SignInForm()
-    return render(request, 'signin_old.html', {'signin_form': form})
+    return render(request, 'signin.html', {'signin_form': form})
 
 
 def test(request):

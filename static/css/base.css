@@ -1,7 +1,22 @@
+html{
+    height: 100%;
+}
+
 body {
     padding-top: 120px;
+    height: 100%;
+    /*font-family: Montserrat, serif;*/
 }
 
 .navbar-brand {
     color: lightcoral !important;
+}
+
+.auth{
+    font-weight: bold;
+    /*font-size: 18px;*/
+}
+
+.padding-offset {
+    padding-top: 0;
 }
