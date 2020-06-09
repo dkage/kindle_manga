@@ -10,6 +10,7 @@ urlpatterns = [
     # Auth paths
     path('signin', core.signin, name='signin'),
     path('signup', core.signup, name='signup'),
+    path('signout', core.signout, name='signout'),
     path('account_success', core.account_success, name='account_success'),
     path('test', core.test, name='test'),
 

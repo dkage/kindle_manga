@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from core.forms import SignUpForm, SignInForm
@@ -34,6 +34,12 @@ def signup(request):
     return render(request, 'signup_old.html', {'user_form': form})
 
 
+def signout(request):
+    logout(request)
+
+    return render(request, 'index.html')
+
+
 def account_success(request):
     return render(request, 'account_success_old.html')
 
@@ -51,7 +57,7 @@ def signin(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('home')
+            return redirect('index')
     else:
         form = SignInForm()
     return render(request, 'signin.html', {'signin_form': form})
