@@ -31,7 +31,7 @@ def signup(request):
             return redirect('account_success')
     else:
         form = SignUpForm()
-    return render(request, 'signup_old.html', {'user_form': form})
+    return render(request, 'signup.html', {'user_form': form})
 
 
 def signout(request):

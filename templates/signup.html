@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block additional_head %}
+    <link rel="stylesheet" href="{% static 'css/sign.css'%}">
+{% endblock %}
+
+{% block title %}
+    KM - Sign Up
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container h-100 justify-content-center align-items-center padding-offset">
+
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="overflow-auto">
+                <form method="POST">
+                    <h2 class="form-title">Sign Up Form</h2>
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+                    <div class="form-field center-align">
+                        <input id="submit_button" class="btn-large" type="submit" name="" value="register">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
