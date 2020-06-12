@@ -1,6 +1,8 @@
 .idea/
 .DS_Store
+backup/
 tmp/
 config/postgres_conn.ini
 test.py
 */resources.txt
+auth.txt

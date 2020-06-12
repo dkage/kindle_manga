@@ -8,3 +8,12 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.form-title{
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.helptext{
+    color: gray;
+}
