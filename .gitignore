@@ -6,3 +6,4 @@ config/postgres_conn.ini
 test.py
 */resources.txt
 auth.txt
+db.sqlite3
