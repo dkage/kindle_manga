@@ -1,9 +1,16 @@
+# System and IDE
 .idea/
 .DS_Store
+
+# Tests, backups and temporary
 backup/
 tmp/
-config/postgres_conn.ini
 test.py
+
+# Databases and auth
+config/postgres_conn.ini
+db.sqlite3
+
+# Text files annotations
 */resources.txt
 auth.txt
-db.sqlite3
