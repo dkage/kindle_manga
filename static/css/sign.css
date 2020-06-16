@@ -1,5 +1,6 @@
 body {
-    padding-top: 0 !important;
+    /*padding-top: 0 !important;*/
+    height: 10% !important;
 }
 
 .btn-center{
@@ -16,4 +17,11 @@ body {
 
 .helptext{
     color: gray;
+}
+
+.btn-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
 }
