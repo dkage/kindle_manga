@@ -1,0 +1,7 @@
+Before Catalina the kindlegen 32 bits for Linux worked flawlessly on MacOS, but after Catalina and the new standard of
+64 bits only, the specific binary was needed for MacOS.
+
+Funny enough, Amazon didn't published the 64 bits at the their website until the date I'm writing this txt.
+The workaround I found was to download the Kindle Previewer MacOS application (program for authors to preview the
+Kindle mobi version of their book), and grab the 64 bits binary directly from the Library directory where the Previewer
+is installed.
