@@ -1,16 +1,17 @@
 {% extends 'layout/base.html' %}
 
+
 {% block title %}
     Kindle Manga
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        {% if user.is_authenticated %}
-            {% include 'subs.html' %}
-        {% else %}
-            {% include 'landing.html' %}
-        {% endif %}
+    <div>
+
+        <div>
+            This will contain the explanation about the system. Landing page for home when logged out.
+        </div>
+
     </div>
 
 {% endblock %}
