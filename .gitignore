@@ -10,6 +10,7 @@ test.py
 # Databases and auth
 config/postgres_conn.ini
 db.sqlite3
+*/migrations/
 
 # Text files annotations
 */resources.txt
