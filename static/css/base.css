@@ -20,3 +20,11 @@ body {
 .padding-offset {
     padding-top: 0;
 }
+
+.main_content {
+    padding-top: 50px;
+}
+
+.section-title {
+    padding-bottom: 20px;
+}

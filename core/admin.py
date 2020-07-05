@@ -1,6 +1,11 @@
 from django.contrib import admin
+from core.models import *
 
-# from core.models import UserProfile
 
 # Register your models here.
-# admin.site.register(UserProfile)
+admin.site.register(Kindle)
+admin.site.register(Manga)
+admin.site.register(ChapterInfo)
+admin.site.register(SystemLog)
+admin.site.register(SendLog)
+admin.site.register(Subscription)

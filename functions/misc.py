@@ -17,6 +17,6 @@ def check_os_for_kindlegen():
     if current_os == 'Darwin':
         return 'kindlegen_64_macos'
     elif current_os == 'Win32':
-        return ' '  # TODO download kindlegen for Windows
+        return ''  # TODO download kindlegen for Windows
     else:
         return 'kindlegen_32_linux'
