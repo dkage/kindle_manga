@@ -1,0 +1,62 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block additional_head %}
+    <link rel="stylesheet" href="{% static 'css/restricted.css' %}">
+    <script src="{% static 'js/restricted_functions.js' %}"></script>
+{% endblock %}
+
+{% block title %} ADMIN {% endblock %}
+{% block body %}
+
+
+    <div class="admin-section-title"><h2>Restricted Usage Functions</h2></div>
+
+    <div class="row">
+
+        <div class="card panel">
+            <div class="col card-content">
+
+                <div class="description-div alert alert-info">
+                        <span class="description">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            The full scan sweeps the entire MangaReader Website for every manga listed and adds to the
+                            database.
+                            <br><br>
+                            <span class="italic">Note that this process may take a while.</span>
+                        </span>
+                </div>
+
+                <div class="last-run">
+                    <span>Last full sweep done at: {{ system_log.date }}</span><br>
+                    <span>Triggered by: {{ system_log.triggered_by }}</span>
+                </div>
+
+                <div class="function-btn">
+                    {% csrf_token %}
+                    <button id="scan-full-btn" onclick="" class="scan btn btn-success">Click to Full Scan</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card panel">
+            <div class="col">
+
+                <div>
+                    <span class="description">PLACEHOLDER </span>
+                </div>
+
+                <div class="last-run">
+                    <span>PLACEHOLDER</span>
+                </div>
+
+                <div class="function-btn">
+                    <button id="scan-full-btn" class="scan btn btn-success">PLACEHOLDER</button>
+                </div>
+
+                <div id="scan-result" class="">PLACEHOLDER</div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

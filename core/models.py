@@ -30,6 +30,7 @@ class ChapterInfo(models.Model):
 
 class SystemLog(models.Model):
     operation = models.CharField(max_length=255)
+    triggered_by_id = models.CharField(max_length=255)
     triggered_by = models.CharField(max_length=255)
     date = models.DateTimeField(default=timezone.now)
 

@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+# App
 from core.forms import SignUpForm, SignInForm
-
+from core.models import SystemLog, Manga
+# Scraper
+from functions.spider import get_all_series
 
 def index(request):
     if request.user.is_authenticated:
@@ -13,11 +15,13 @@ def index(request):
 
 
 @login_required(login_url='signin')
-def admin_menu(request):
-    if request.user.is_superadmin:
-        return render(request, 'admin.html')
+def restricted(request):
+    if request.user.is_superuser:
+        system_log = SystemLog.objects.filter(operation='Full Scan').order_by('-date')[0]
+
+        return render(request, 'restricted.html', {'system_log': system_log})
     else:
-        return render(request, 'dashboard.html')
+        return redirect('index')
 
 
 @login_required(login_url='signin')
@@ -74,8 +78,26 @@ def signin(request):
     return render(request, 'signin.html', {'signin_form': form})
 
 
+@login_required(login_url='signin')
 def account(request):
     return render(request, 'account.html')
 
 
+def full_scan(request):
+    # all_series = get_all_series()
+    logger = SystemLog()
+    logger.operation = 'Full Scan'
+    logger.triggered_by = request.user.username
+    logger.triggered_by_id = request.user.id
+    logger.save()
 
+    all_series_array = get_all_series()
+
+    for series in all_series_array:
+        try:
+            Manga.objects.get(series_name=series[0], manga_reader_url=series[1])
+        except Manga.DoesNotExist:
+            manga = Manga(series_name=series[0], manga_reader_url=series[1])
+            manga.save()
+
+    return HttpResponse('Adrian, I did it')

@@ -8,6 +8,10 @@ body {
     /*font-family: Montserrat, serif;*/
 }
 
+.italic {
+    font-style: italic !important;
+}
+
 .navbar-brand {
     color: lightcoral !important;
 }

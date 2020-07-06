@@ -1,0 +1,21 @@
+.panel {
+    padding: 50px 50px 50px 50px;
+}
+
+.card {
+    margin: auto;
+    width: 500px;
+    height: 500px;
+}
+
+.admin-section-title {
+    padding-bottom: 50px;
+}
+
+.last-run {
+    font-style: italic;
+}
+
+.card-content>div {
+    padding: 20px;
+}

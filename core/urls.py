@@ -13,9 +13,11 @@ urlpatterns = [
     path('signout', core.signout, name='signout'),
     path('account', core.account, name='account'),
     path('account_success', core.account_success, name='account_success'), # TODO delete this?
-    path('test', core.test, name='test'),
 
     # App paths
     path('dashboard', core.index, name='home'),
-    path('admin', core.admin_menu, name='admin'),
+    path('restricted', core.restricted, name='restricted'),
+
+    # Routine calls paths
+    path('full_scan', core.full_scan, name='full_scan')
 ]
