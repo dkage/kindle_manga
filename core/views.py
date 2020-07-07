@@ -7,6 +7,7 @@ from core.models import SystemLog, Manga
 # Scraper
 from functions.spider import get_all_series
 
+
 def index(request):
     if request.user.is_authenticated:
         return render(request, 'dashboard.html')
@@ -17,7 +18,13 @@ def index(request):
 @login_required(login_url='signin')
 def restricted(request):
     if request.user.is_superuser:
-        system_log = SystemLog.objects.filter(operation='Full Scan').order_by('-date')[0]
+
+        try:
+            system_log = SystemLog.objects.filter(operation='Full Scan').order_by('-date')[0]
+        except IndexError:
+            system_log = dict()
+            system_log['triggered_by'] = 'Not done yet'
+            system_log['date'] = ''
 
         return render(request, 'restricted.html', {'system_log': system_log})
     else:
@@ -26,6 +33,7 @@ def restricted(request):
 
 @login_required(login_url='signin')
 def dashboard(request):
+
     return redirect('index')
 
 

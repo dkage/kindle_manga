@@ -28,13 +28,13 @@
                 </div>
 
                 <div class="last-run">
-                    <span>Last full sweep done at: {{ system_log.date }}</span><br>
-                    <span>Triggered by: {{ system_log.triggered_by }}</span>
+                    <span class="font-weight-bolder">Last full sweep done at:</span> <span class="green-text">{{ system_log.date }}</span> <br>
+                    <span class="font-weight-bolder">Triggered by: </span><span class="green-text">{{ system_log.triggered_by }}</span>
                 </div>
 
                 <div class="function-btn">
                     {% csrf_token %}
-                    <button id="scan-full-btn" onclick="" class="scan btn btn-success">Click to Full Scan</button>
+                    <button id="scan-full-btn" class="scan btn btn-success">Click to Full Scan</button>
                 </div>
             </div>
         </div>

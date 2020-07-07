@@ -1,6 +1,15 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as BaseUserClass
 from django.utils import timezone
+
+
+class Manga(models.Model):
+    series_name = models.CharField(max_length=255)
+    manga_reader_url = models.CharField(max_length=255)
+
+
+class User(BaseUserClass):
+    subscriptions = models.ManyToManyField(Manga, through="Subscription")
 
 
 class Kindle(models.Model):
@@ -8,11 +17,6 @@ class Kindle(models.Model):
     kindle_model = models.CharField(max_length=100, blank=True)
     kindle_email = models.EmailField()
     created_at = models.DateTimeField(default=timezone.now)
-
-
-class Manga(models.Model):
-    series_name = models.CharField(max_length=255)
-    manga_reader_url = models.CharField(max_length=255)
 
 
 class ChapterInfo(models.Model):
