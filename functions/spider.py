@@ -3,6 +3,7 @@ import requests
 import shutil
 from functions.misc import *
 from defines import *
+from time import sleep
 
 
 # Spider scraper functions designed to crawl only mangareader (maybe add more sources later [maybe scanlators])
@@ -25,10 +26,10 @@ def get_all_series():
     print('GOOD HTTP request response. Code: ' + str(http_return.status_code))
 
     soup = BeautifulSoup(http_return.content, 'lxml')
-    series_columns = soup.find_all('div', {"class": "series_col"})
+    series_cards = soup.find_all('div', {"class": "d40"})
 
     series_array = []
-    for column in series_columns:
+    for column in series_cards:
         lists = column.find_all('li')
         for series in lists:
             series_name = series.text if series.text[0] != ' ' else series.text[1::]
@@ -58,7 +59,6 @@ def get_all_chapters(series_link):
 
     # Skip first row using 1:: to ignore column headers
     for chapter in series_chapters[1::]:
-
         # Each row has two TDs, first one contains href and chapter name, second has "date added" value
         row = chapter.find_all('td')
 
@@ -90,7 +90,6 @@ def get_chapter_size(series_name, series_chapter):
 
 
 def download_chapter(series_name, series_chapter):
-
     manga_full_path = get_chapter_full_path(series_name, series_chapter)
     full_url = BASE_URL + '/' + series_name + '/' + str(series_chapter)
 
@@ -113,7 +112,23 @@ def download_chapter(series_name, series_chapter):
         img_request = requests.get(img_div, stream=True)
         with open(manga_full_path + '/' + str(page) + '.jpg', 'wb') as out_file:
             shutil.copyfileobj(img_request.raw, out_file)
+        sleep(3)
 
     print('Chapter downloaded successfully.')
 
     return True
+
+
+def get_image_url(series_url):
+    print(series_url)
+    try:
+        http_return = requests.get(BASE_URL + series_url)
+        print(http_return)
+    except requests.exceptions.ConnectionError:
+        print('BAD HTTP request response. Is connection online?' + str())
+        return 'Error code: img.1'
+
+    soup = BeautifulSoup(http_return.content, 'lxml')
+    img_src = soup.find('div', {'class': 'd38'}).find('img')['src']
+
+    return img_src

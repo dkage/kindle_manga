@@ -1,16 +1,30 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # App
 from core.forms import SignUpForm, SignInForm
 from core.models import SystemLog, Manga
 # Scraper
-from functions.spider import get_all_series
+from functions.spider import get_all_series, get_image_url, BASE_URL
 
 
 def index(request):
     if request.user.is_authenticated:
-        return render(request, 'dashboard.html')
+        user = get_object_or_404(User, pk=1)
+        subscriptions = user.subscriptions.all()
+
+        covers = dict()
+        for sub in subscriptions:
+            print(BASE_URL + sub.manga_reader_url)
+            covers[sub.id] = get_image_url(sub.manga_reader_url)
+
+        db_data = {'subs': subscriptions,
+                   'covers': covers,
+                   'base_url': BASE_URL}
+        print(covers)
+
+        return render(request, 'dashboard.html', context=db_data)
     else:
         return render(request, 'index.html')
 
@@ -33,7 +47,6 @@ def restricted(request):
 
 @login_required(login_url='signin')
 def dashboard(request):
-
     return redirect('index')
 
 
@@ -92,7 +105,7 @@ def account(request):
 
 
 def full_scan(request):
-    # all_series = get_all_series()
+
     logger = SystemLog()
     logger.operation = 'Full Scan'
     logger.triggered_by = request.user.username
@@ -107,5 +120,7 @@ def full_scan(request):
         except Manga.DoesNotExist:
             manga = Manga(series_name=series[0], manga_reader_url=series[1])
             manga.save()
+
+    # TODO add another log, and find a way to return when finished in ajax
 
     return HttpResponse('Adrian, I did it')

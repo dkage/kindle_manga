@@ -1,4 +1,5 @@
 {% extends 'layout/base.html' %}
+{% load custom_filters %}
 
 
 {% block body %}
@@ -9,6 +10,12 @@
 
         {# #TODO add if to check there any subs for this user #}
 
+        {% for sub in subs %}
+            {{ sub }}<br>
+            {{ sub.id }}<br>
+            {{ base_url|add:sub.manga_reader_url }}
+            <img src="{{ covers|get_item:sub.id }}" alt="">
+        {% endfor %}
 
         <h3>You have not subscribed to any series yet.</h3>
         <br><br>

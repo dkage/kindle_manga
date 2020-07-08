@@ -1,15 +1,15 @@
 from django.db import models
-from django.contrib.auth.models import User as BaseUserClass
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 
 class Manga(models.Model):
     series_name = models.CharField(max_length=255)
     manga_reader_url = models.CharField(max_length=255)
+    subscribers = models.ManyToManyField(User, related_name='subscriptions')
 
-
-class User(BaseUserClass):
-    subscriptions = models.ManyToManyField(Manga, through="Subscription")
+    def __str__(self):
+        return self.series_name
 
 
 class Kindle(models.Model):
@@ -57,11 +57,11 @@ class SendLog(models.Model):
         self.save()
 
 
-class Subscription(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
-
-    def subscribe(self, user_id, manga_id):
-        self.user = user_id
-        self.manga = manga_id
-        self.save()
+# class Subscription(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
+#
+#     def subscribe(self, user_id, manga_id):
+#         self.user = user_id
+#         self.manga = manga_id
+#         self.save()
