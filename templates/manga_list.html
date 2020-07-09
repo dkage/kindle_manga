@@ -1,0 +1,33 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block title %}
+    Manga List
+{% endblock %}
+
+{% block additional_head %}
+    <script type="text/javascript" src="{% static "js/list.js" %}"></script>
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+
+{% block body %}
+    <h2>List of available mangas</h2>
+
+
+    <div class="form-group">
+        <label class="col-form-label col-form-label-lg" for="search_filter">Filter name</label>
+        <input id="search_filter" class="form-control form-control-lg" type="text" placeholder="Search your manga">
+    </div>
+
+    <div class="list-group">
+    <ul id="manga-list" class="for-list">
+        {% for manga in manga_list %}
+            <li class="each-item list-group-item list-group-item-action">
+                {{ manga.series_name }}
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+
+
+{% endblock %}

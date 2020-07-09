@@ -1,0 +1,24 @@
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.subscriptions {
+    padding-bottom: 100px;
+}
+
+.card {
+    max-width: 300px;
+    border-radius: 30px;
+    margin-right: 50px;
+}
+
+.cover-box {
+    text-align: center;
+    padding: 50px;
+}
+
+.manga-title {
+    padding-top: 30px;
+    text-align: center;
+}

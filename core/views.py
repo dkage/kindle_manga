@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.views.generic import ListView
 # App
 from core.forms import SignUpForm, SignInForm
 from core.models import SystemLog, Manga
@@ -16,13 +18,11 @@ def index(request):
 
         covers = dict()
         for sub in subscriptions:
-            print(BASE_URL + sub.manga_reader_url)
             covers[sub.id] = get_image_url(sub.manga_reader_url)
 
         db_data = {'subs': subscriptions,
                    'covers': covers,
                    'base_url': BASE_URL}
-        print(covers)
 
         return render(request, 'dashboard.html', context=db_data)
     else:
@@ -57,7 +57,6 @@ def signup(request):
 
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        print(form)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -85,9 +84,9 @@ def signin(request):
         return redirect('index')
 
     if request.method == 'POST':
-        print(request.POST)
+
         form = SignInForm(data=request.POST)
-        print(form)
+
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -124,3 +123,16 @@ def full_scan(request):
     # TODO add another log, and find a way to return when finished in ajax
 
     return HttpResponse('Adrian, I did it')
+
+
+class MangaListView(LoginRequiredMixin, ListView):
+    login_url = '/signin'
+    redirect_field_name = '/manga_list'
+
+    model = Manga
+    template_name = 'manga_list.html'
+    ordering = ['series_name']
+
+
+def about(request):
+    return render(request, 'about.html')

@@ -1,25 +1,45 @@
 {% extends 'layout/base.html' %}
+{% load static %}
 {% load custom_filters %}
 
+{% block additional_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
 
 {% block body %}
 
-    <h2 class="section-title">Dashboard</h2>
+    {#    <h2 class="section-title">Dashboard</h2>#}
 
     <div class="main_content">
 
-        {# #TODO add if to check there any subs for this user #}
+        {% if subs %}
+            <div class="subscriptions">
+                <h3>Subscribed Mangas</h3>
+            </div>
+            <div class="row">
+                {% for sub in subs %}
+                    <div class="card">
+                        <div class="manga-title"> <h4>{{ sub }}</h4></div>
+                        {#                    {{ sub.id }}<br>#}
+                        {#                    {{ base_url|add:sub.manga_reader_url }}#}
 
-        {% for sub in subs %}
-            {{ sub }}<br>
-            {{ sub.id }}<br>
-            {{ base_url|add:sub.manga_reader_url }}
-            <img src="{{ covers|get_item:sub.id }}" alt="">
-        {% endfor %}
+                        <div class="cover-box">
+                            <img src="{{ covers|get_item:sub.id }}" alt="{{ sub }} manga cover">
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
-        <h3>You have not subscribed to any series yet.</h3>
-        <br><br>
-        <p class="hint">Find your favorite series on the <a href="#">Featured</a> or <a href="#">All Series</a> menu</p>
+            <!-- IN CASE USER THERE IS NO SUBSCRIPTIONS YET -->
+        {% else %}
+            <h3>You have not subscribed to any series yet.</h3>
+            <p class="hint">Find your favorite series on the <a href="#">Featured</a> or <a href="#">All Series</a> menu</p>
+            <br><br>
+        {% endif %}
 
     </div>
 
