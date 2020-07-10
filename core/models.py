@@ -20,16 +20,11 @@ class Kindle(models.Model):
 
 
 class ChapterInfo(models.Model):
-    manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
+    # manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
+    manga = models.OneToOneField(Manga, on_delete=models.CASCADE, primary_key=True)
     num_chapters = models.IntegerField()
     last_chapter = models.CharField(max_length=255)
     last_scan_date = models.DateTimeField(default=timezone.now)
-
-    def update_chapter(self, num_chapters, last_chapter, last_scan_date):
-        self.num_chapters = num_chapters
-        self.last_chapter = last_chapter
-        self.last_scan_date = last_scan_date
-        self.save()
 
 
 class SystemLog(models.Model):
@@ -55,13 +50,3 @@ class SendLog(models.Model):
         self.manga_id = manga_id
         self.chapter_sent = chapter_num
         self.save()
-
-
-# class Subscription(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
-#
-#     def subscribe(self, user_id, manga_id):
-#         self.user = user_id
-#         self.manga = manga_id
-#         self.save()

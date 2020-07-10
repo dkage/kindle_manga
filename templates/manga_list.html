@@ -20,13 +20,20 @@
     </div>
 
     <div class="list-group">
-    <ul id="manga-list" class="for-list">
-        {% for manga in manga_list %}
-            <li class="each-item list-group-item list-group-item-action">
-                {{ manga.series_name }}
-            </li>
-        {% endfor %}
-    </ul>
+        <ul id="manga-list" class="for-list">
+            {% for manga in manga_list %}
+
+                <li class="each-item list-group-item list-group-item-action">
+                    <a href="{% url "manga" manga.id %}">
+                        {{ manga.series_name }}
+                    </a>
+                </li>
+            {% endfor %}
+            {% if not manga %}
+                <br><br>
+                <h3 style="color: darkred"><span>There is no manga listed in the database or we have a problematic error here. Contact the admin.</span></h3>
+            {% endif %}
+        </ul>
     </div>
 
 

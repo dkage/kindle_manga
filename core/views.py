@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 # App
 from core.forms import SignUpForm, SignInForm
 from core.models import SystemLog, Manga
@@ -132,6 +132,14 @@ class MangaListView(LoginRequiredMixin, ListView):
     model = Manga
     template_name = 'manga_list.html'
     ordering = ['series_name']
+
+
+class MangaDetailView(LoginRequiredMixin, DetailView):
+    login_url = '/signin'
+    redirect_field_name = '/manga_list'
+
+    model = Manga
+    template_name = 'manga.html'
 
 
 def about(request):

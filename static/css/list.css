@@ -1,4 +1,21 @@
 ul {
     list-style-type: none;
     cursor: pointer;
+    padding-right: 40px;
+}
+
+li {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+li>a {
+    display: block;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+}
+
+
+a:hover {
+    text-decoration: none;
 }
