@@ -19,18 +19,22 @@ class Kindle(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
 
-class ChapterInfo(models.Model):
-    # manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
+class Chapter(models.Model):
     manga = models.OneToOneField(Manga, on_delete=models.CASCADE, primary_key=True)
-    num_chapters = models.IntegerField()
-    last_chapter = models.CharField(max_length=255)
-    last_scan_date = models.DateTimeField(default=timezone.now)
+    chapter_number = models.IntegerField()
+    chapter_name = models.CharField(max_length=255)
+    chapter_date = models.DateField()
+
+
+class ChapterScan(models.Model):
+    manga = models.OneToOneField(Manga, on_delete=models.CASCADE, primary_key=True)
+    triggered_by = models.OneToOneField(User, on_delete=models.DO_NOTHING)
+    last_scanned_at = models.DateField(default=timezone.now)
 
 
 class SystemLog(models.Model):
     operation = models.CharField(max_length=255)
-    triggered_by_id = models.CharField(max_length=255)
-    triggered_by = models.CharField(max_length=255)
+    triggered_by = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     date = models.DateTimeField(default=timezone.now)
 
     def save_log(self, operation, trigger_user):
@@ -39,7 +43,7 @@ class SystemLog(models.Model):
         self.save()
 
 
-class SendLog(models.Model):
+class MailingLog(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     manga = models.ForeignKey(Manga, on_delete=models.DO_NOTHING)
     chapter_sent = models.IntegerField()

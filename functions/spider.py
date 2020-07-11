@@ -4,6 +4,7 @@ import shutil
 from functions.misc import *
 from defines import *
 from time import sleep
+import sys
 
 
 # Spider scraper functions designed to crawl only mangareader (maybe add more sources later [maybe scanlators])
@@ -55,7 +56,10 @@ def get_all_chapters(series_link):
     # TODO add requests error handling for bad conn
     http_return = requests.get(series_url)
     soup = BeautifulSoup(http_return.content, 'lxml')
-    series_chapters = soup.find('table', {'id': 'listing'}).find_all('tr')
+    try:
+        series_chapters = soup.find('table', {'class': 'd48'}).find_all('tr')
+    except BeautifulSoup.AttributeError:
+        return 'Error. Soup problem'
 
     # Skip first row using 1:: to ignore column headers
     for chapter in series_chapters[1::]:
@@ -69,6 +73,9 @@ def get_all_chapters(series_link):
 
         chapter_data = chapter_number, chapter_name, chapter_href, chapter_date
         chapters_array.append(chapter_data)
+
+    # chapters_qnt = len(chapters_array) + 1
+    # return chapters_array, chapters_qnt
 
     return chapters_array
 
