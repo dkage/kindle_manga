@@ -127,15 +127,34 @@ def download_chapter(series_name, series_chapter):
 
 
 def get_image_url(series_url):
-    print(series_url)
+    
     try:
         http_return = requests.get(BASE_URL + series_url)
         print(http_return)
     except requests.exceptions.ConnectionError:
         print('BAD HTTP request response. Is connection online?' + str())
-        return 'Error code: img.1'
+        return 'Error code: IM001'
 
     soup = BeautifulSoup(http_return.content, 'lxml')
     img_src = soup.find('div', {'class': 'd38'}).find('img')['src']
 
     return img_src
+
+
+def download_cover(series_url):
+
+    image_url = get_image_url(series_url)
+
+    http_return = requests.get(image_url, stream=True)
+    img_name = series_url.replace('/', '')
+
+    if http_return.status_code == 200:
+        http_return.raw.decode_content = True
+
+        with open(img_name + '.jpg', 'wb') as f:
+            shutil.copyfileobj(http_return.raw, f)
+
+        del http_return
+    print(img_name.join('.jpg'))
+
+    return 'Success'
