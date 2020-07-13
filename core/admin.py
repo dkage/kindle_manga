@@ -5,6 +5,6 @@ from core.models import *
 # Register your models here.
 admin.site.register(Kindle)
 admin.site.register(Manga)
-admin.site.register(ChapterInfo)
+admin.site.register(ChapterScan)
 admin.site.register(SystemLog)
-admin.site.register(SendLog)
+admin.site.register(MailingLog)

@@ -107,8 +107,8 @@ def full_scan(request):
 
     logger = SystemLog()
     logger.operation = 'Full Scan'
-    logger.triggered_by = request.user.username
-    logger.triggered_by_id = request.user.id
+    user = User.objects.get(id=request.user.id)
+    logger.triggered_by = user
     logger.save()
 
     all_series_array = get_all_series()
