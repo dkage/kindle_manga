@@ -1,5 +1,6 @@
 from django.urls import path
-
+from django.conf import settings
+from django.conf.urls.static import static
 import core.views as core
 
 urlpatterns = [
@@ -23,4 +24,5 @@ urlpatterns = [
 
     # Routine calls paths
     path('full_scan', core.full_scan, name='full_scan')
-]
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Adds /media/ folder to urls

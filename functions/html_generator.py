@@ -1,7 +1,7 @@
 from functions.misc import *
 from natsort import natsorted
-import sys
 import os
+import sys
 
 
 # To guarantee usage of CSS, it's better to insert it into an style tag.
@@ -30,7 +30,7 @@ def html_gen(series_name, chapter_number):
 
     content = "<div id='imgs_container'>"
 
-    chapter_relative_path = '../' + series_name + '/' + str(chapter_number) + '/' # This path is relative to HTML
+    chapter_relative_path = '../' + series_name + '/' + str(chapter_number) + '/'  # This path is relative to HTML
     print(chapter_relative_path)
 
     for image in sorted_images_list:

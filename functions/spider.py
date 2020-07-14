@@ -1,10 +1,12 @@
-from bs4 import BeautifulSoup
+import sys
+import os
 import requests
 import shutil
+from bs4 import BeautifulSoup
 from functions.misc import *
 from defines import *
 from time import sleep
-import sys
+from defines import COVERS_DIR
 
 
 # Spider scraper functions designed to crawl only mangareader (maybe add more sources later [maybe scanlators])
@@ -97,6 +99,7 @@ def get_chapter_size(series_name, series_chapter):
 
 
 def download_chapter(series_name, series_chapter):
+    # TODO add docs
     manga_full_path = get_chapter_full_path(series_name, series_chapter)
     full_url = BASE_URL + '/' + series_name + '/' + str(series_chapter)
 
@@ -127,6 +130,7 @@ def download_chapter(series_name, series_chapter):
 
 
 def get_image_url(series_url):
+    # TODO add docs
     
     try:
         http_return = requests.get(BASE_URL + series_url)
@@ -142,19 +146,19 @@ def get_image_url(series_url):
 
 
 def download_cover(series_url):
+    # TODO add docs
 
     image_url = get_image_url(series_url)
 
     http_return = requests.get(image_url, stream=True)
-    img_name = series_url.replace('/', '')
+    img_name = ''.join([series_url.replace('/', ''), '.jpg'])
 
     if http_return.status_code == 200:
         http_return.raw.decode_content = True
 
-        with open(img_name + '.jpg', 'wb') as f:
+        with open(os.path.join(COVERS_DIR, img_name), 'wb') as f:
             shutil.copyfileobj(http_return.raw, f)
 
         del http_return
-    print(img_name.join('.jpg'))
 
     return 'Success'

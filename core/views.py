@@ -4,11 +4,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView
+from defines import COVERS_DIR
+import os
 # App
 from core.forms import SignUpForm, SignInForm
 from core.models import SystemLog, Manga
 # Scraper
-from functions.spider import get_all_series, get_image_url, BASE_URL
+from functions.spider import get_all_series, get_image_url, BASE_URL, download_cover
 
 
 def index(request):
@@ -140,6 +142,24 @@ class MangaDetailView(LoginRequiredMixin, DetailView):
 
     model = Manga
     template_name = 'manga.html'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context for the current object being detailed
+        context = super().get_context_data(**kwargs)
+
+        series_url = self.object.manga_reader_url
+
+        img_name = ''.join([series_url.replace('/', ''), '.jpg'])
+        cover_path = os.path.join(COVERS_DIR, img_name)
+        print(cover_path)
+        print('testing')
+
+        self.object.cover = img_name
+        # Check if cover is already downloaded, if it isn't, scrap and download from mangareader
+        if not os.path.isfile(cover_path):
+            download_cover(series_url)
+
+        return context
 
 
 def about(request):

@@ -15,3 +15,6 @@ db.sqlite3
 # Text files annotations
 */resources.txt
 auth.txt
+
+# Images
+media/covers/*.jpg
