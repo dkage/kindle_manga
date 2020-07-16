@@ -20,7 +20,7 @@ class Kindle(models.Model):
 
 
 class Chapter(models.Model):
-    manga = models.OneToOneField(Manga, on_delete=models.CASCADE, primary_key=True)
+    manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
     chapter_number = models.IntegerField()
     chapter_name = models.CharField(max_length=255)
     chapter_date = models.DateField()

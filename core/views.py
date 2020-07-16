@@ -1,16 +1,20 @@
+# Django
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView
+from django.core.exceptions import ObjectDoesNotExist
 from defines import COVERS_DIR
-import os
 # App
 from core.forms import SignUpForm, SignInForm
 from core.models import SystemLog, Manga
 # Scraper
-from functions.spider import get_all_series, get_image_url, BASE_URL, download_cover
+from functions.spider import get_all_series, get_all_chapters, get_image_url, BASE_URL, download_cover
+# Misc
+import os
+import re
 
 
 def index(request):
@@ -162,3 +166,23 @@ class MangaDetailView(LoginRequiredMixin, DetailView):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def test(request, pk):
+    # death note = 1073
+    manga_model = get_object_or_404(Manga, pk=1073)
+    url = manga_model.manga_reader_url
+
+    chapters = get_all_chapters('/one-piece')
+    for chapter in chapters:
+        chapter_number = re.findall(r'\d+', chapter[0])[0]
+        chapter_name = chapter[1]
+        chapter_date = chapter[2]
+
+    # when relationship entry is not found yet
+    # try:
+    #     print(manga_model.chapter)
+    # except ObjectDoesNotExist:
+    #     return HttpResponse('faiou')
+
+    return HttpResponse('test')

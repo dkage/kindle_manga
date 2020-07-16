@@ -24,8 +24,13 @@
 
         <div class="col-lg-3">
 
-            <div class="card card-info subscribe">
-                <span>Click to SUBSCRIBE</span>
+            <div class="card card-info subscribe unsubbed">
+                <div class="sub-msg">
+                    <span>Click to SUBSCRIBE</span>
+                </div>
+                <div class="unsub-msg">
+                    <span>Click to UNSUBSCRIBE</span>
+                </div>
             </div>
 
             <div>
@@ -41,6 +46,7 @@
         <div class="col">
             <div class="chapter-container card">
                 <div class=" bottom-card chapters-card scrollbar-primary">
+                    {{ manga.chapter }}
                     <p>test</p>
                     <p>test</p>
                     <p>test</p>

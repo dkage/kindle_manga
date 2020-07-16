@@ -51,10 +51,26 @@
 }
 
 .subscribe {
-    background: #004e00;
     justify-content: center;
     align-items: center;
     padding: 0;
+    cursor: pointer;
+}
+
+.unsubbed {
+    background: #004e00;
+}
+
+.subbed {
+    background: darkred;
+}
+
+.sub-msg {
+
+}
+
+.unsub-msg {
+    display: none;
 }
 
 .date {

@@ -21,6 +21,7 @@ urlpatterns = [
     path('restricted', core.restricted, name='restricted'),
     path('manga_list', core.MangaListView.as_view(), name='manga_list'),
     path('manga/<int:pk>', core.MangaDetailView.as_view(), name='manga'),
+    path('test/<int:pk>', core.test, name='test'),
 
     # Routine calls paths
     path('full_scan', core.full_scan, name='full_scan')

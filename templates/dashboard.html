@@ -12,8 +12,6 @@
 
 {% block body %}
 
-    {#    <h2 class="section-title">Dashboard</h2>#}
-
     <div class="main_content">
 
         {% if subs %}
@@ -39,7 +37,7 @@
             <!-- IN CASE USER THERE IS NO SUBSCRIPTIONS YET -->
         {% else %}
             <h3>You have not subscribed to any series yet.</h3>
-            <p class="hint">Find your favorite series on the <a href="#">Featured</a> or <a href="#">All Series</a> menu</p>
+            <p class="hint">Find your favorite series on the <a href="#">Featured</a> or <a href="{% url 'manga_list' %}">All Series</a> menu</p>
             <br><br>
         {% endif %}
 
