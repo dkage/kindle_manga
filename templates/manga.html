@@ -7,15 +7,67 @@
 {% endblock %}
 
 {% block additional_head %}
+    <link rel="stylesheet" href="{% static 'css/manga.css' %}">
 {% endblock %}
 
 
 {% block body %}
 
-    <h2>
-        {{ manga }}
-    </h2>
+    <div class="row manga-title">
+        <h2>
+            {{ manga }}
+        </h2>
+    </div>
 
-    <img src="/media/covers/{{ manga.cover }}"  alt=""/>
+
+    <div class="row flex-grow-1 bottom-row">
+
+        <div class="col-lg-3">
+
+            <div class="card card-info subscribe">
+                <span>Click to SUBSCRIBE</span>
+            </div>
+
+            <div>
+                <img id="cover" src="/media/covers/{{ manga.cover }}"  alt=""/>
+            </div>
+            <div class="card card-info">
+                <span class="last-chapter date-info">Last chapter added at:</span><br>
+                <span class="date">10/10/1999</span>
+                <span class="last-scan date-info">Last scan made at:</span><br>
+                <span class="date">10/12/2000</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="chapter-container card">
+                <div class=" bottom-card chapters-card scrollbar-primary">
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}

@@ -1,0 +1,66 @@
+#cover {
+    padding: 20px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+
+}
+
+.img-card {
+    min-height: 400px;
+    max-height: 400px;
+    justify-content: center;
+}
+
+.chapters-card {
+    min-height: 500px;
+    max-height: 500px !important;
+    overflow: visible;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 15px;
+    border-radius: 0 !important;
+}
+
+.chapter-container {
+    border-radius: 15px !important;
+    border: 0;
+    padding: 10px 2px;
+}
+
+.scrollbar-primary {
+    /*scrollbar-color: #00bc8c #375a7f;*/
+    scrollbar-color: #00bc8c #303030;
+}
+
+.row {
+    padding: 30px;
+}
+
+.card {
+    border-radius: 18px;
+}
+
+.card-info{
+    padding: 15px 0 15px 30px;
+    min-height: 50px;
+}
+
+.manga-title {
+    justify-content: center;
+}
+
+.subscribe {
+    background: #004e00;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.date {
+    font-style: italic;
+}
+
+.date-info {
+    font-weight: bold;
+}

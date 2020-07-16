@@ -151,8 +151,6 @@ class MangaDetailView(LoginRequiredMixin, DetailView):
 
         img_name = ''.join([series_url.replace('/', ''), '.jpg'])
         cover_path = os.path.join(COVERS_DIR, img_name)
-        print(cover_path)
-        print('testing')
 
         self.object.cover = img_name
         # Check if cover is already downloaded, if it isn't, scrap and download from mangareader
