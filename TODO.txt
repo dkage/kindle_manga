@@ -1,0 +1,23 @@
+# Now
+-> Create validation to change button color checking database
+
+----- Create jquery to change subscribe button color
+Create function to fill chapter log
+Create validation to detail view show NO CHAPTERS YET, CLICK TO FORCE SCAN (ajax later)
+Add anchor to dashboard icons
+Create function to subscribe button to fill database subscriptions
+Create function to unsub ''
+Create log of subs functions
+
+# Soon
+Think how to choose which are going to be downloaded
+Think a way how to scan daily
+Check how to log which chapters each user downloaded
+Find a way to send emails
+Find a way to track how many downloads each user has done and a way to him to see his own limits
+Fill featured page (count how many subs each manga, show five or ten first (?))
+
+# No hurry
+Fill about us page
+Make logo?
+Improve layouts
