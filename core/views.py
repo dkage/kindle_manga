@@ -109,28 +109,6 @@ def account(request):
     return render(request, 'account.html')
 
 
-def full_scan(request):
-
-    logger = SystemLog()
-    logger.operation = 'Full Scan'
-    user = User.objects.get(id=request.user.id)
-    logger.triggered_by = user
-    logger.save()
-
-    all_series_array = get_all_series()
-
-    for series in all_series_array:
-        try:
-            Manga.objects.get(series_name=series[0], manga_reader_url=series[1])
-        except Manga.DoesNotExist:
-            manga = Manga(series_name=series[0], manga_reader_url=series[1])
-            manga.save()
-
-    # TODO add another log, and find a way to return when finished in ajax
-
-    return HttpResponse('Adrian, I did it')
-
-
 class MangaListView(LoginRequiredMixin, ListView):
     login_url = '/signin'
     redirect_field_name = '/manga_list'
@@ -150,6 +128,14 @@ class MangaDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context for the current object being detailed
         context = super().get_context_data(**kwargs)
+
+        # Check if user is subbed already to current manga
+        user = User.objects.get(id=self.request.user.id)
+        sub_list = Manga.objects.get(id=self.object.id).subscribers.all()
+        if user in sub_list:
+            context['subbed'] = True
+        else:
+            context['subbed'] = False
 
         series_url = self.object.manga_reader_url
 
@@ -186,3 +172,39 @@ def test(request, pk):
     #     return HttpResponse('faiou')
 
     return HttpResponse('test')
+
+
+def full_scan(request):
+
+    logger = SystemLog()
+    logger.operation = 'Full Scan'
+    user = User.objects.get(id=request.user.id)
+    logger.triggered_by = user
+    logger.save()
+
+    all_series_array = get_all_series()
+
+    for series in all_series_array:
+        try:
+            Manga.objects.get(series_name=series[0], manga_reader_url=series[1])
+        except Manga.DoesNotExist:
+            manga = Manga(series_name=series[0], manga_reader_url=series[1])
+            manga.save()
+
+    # TODO add another log, and find a way to return when finished in ajax
+
+    return HttpResponse('Adrian, I did it')
+
+
+def subscribe(request):
+
+    user = User.objects.get(id=request.user.id)
+    manga = Manga.objects.get(id=request.POST['manga_id'])
+
+    if user in manga.subscribers.all():
+        user.subscriptions.remove(manga)
+    else:
+        user.subscriptions.add(manga)
+    user.save()
+
+    return HttpResponse('ok')

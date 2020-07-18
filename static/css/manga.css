@@ -29,7 +29,6 @@
 }
 
 .scrollbar-primary {
-    /*scrollbar-color: #00bc8c #375a7f;*/
     scrollbar-color: #00bc8c #303030;
 }
 
@@ -60,9 +59,15 @@
 .unsubbed {
     background: #004e00;
 }
+.unsubbed:hover {
+    background: #002600;
+}
 
 .subbed {
     background: darkred;
+}
+.subbed:hover {
+    background: #4c0000;
 }
 
 .sub-msg {

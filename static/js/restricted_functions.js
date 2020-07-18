@@ -30,12 +30,3 @@ $(function() {
         });
     })
 });
-
-
-// $.ajax({
-//             url: 'controller/addBookmark',
-//             type: 'POST',
-//             data: {'submit':true}, // An object with the key 'submit' and value 'true;
-//             success: function (result) {
-//               alert("Your bookmark has been saved");
-//             }

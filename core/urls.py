@@ -23,7 +23,9 @@ urlpatterns = [
     path('manga/<int:pk>', core.MangaDetailView.as_view(), name='manga'),
     path('test/<int:pk>', core.test, name='test'),
 
-    # Routine calls paths
-    path('full_scan', core.full_scan, name='full_scan')
+    # AJAX CRUDs paths
+    path('full_scan', core.full_scan, name='full_scan'),
+    path('subscribe', core.subscribe, name='subscribe'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Adds /media/ folder to urls

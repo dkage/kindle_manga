@@ -8,6 +8,7 @@
 
 {% block additional_head %}
     <link rel="stylesheet" href="{% static 'css/manga.css' %}">
+    <script src="{% static 'js/manga.js' %}"></script>
 {% endblock %}
 
 
@@ -16,19 +17,24 @@
     <div class="row manga-title">
         <h2>
             {{ manga }}
+            {{ subbed }}
         </h2>
     </div>
-
 
     <div class="row flex-grow-1 bottom-row">
 
         <div class="col-lg-3">
 
-            <div class="card card-info subscribe unsubbed">
-                <div class="sub-msg">
+            <div id="subscribe" class="card card-info subscribe {% if subbed %} {{ 'subbed' }} {% else %} {{ 'unsubbed' }} {% endif %}">
+
+                <div class="hidden">
+                    {% csrf_token %}
+                    <input type="hidden" name="manga_id" value="{{ manga.id }}">
+                </div>
+                <div class="sub-btn sub" style="{% if subbed %} {{ 'display: none;' }} {% else %} {{ 'display: block;' }} {% endif %}">
                     <span>Click to SUBSCRIBE</span>
                 </div>
-                <div class="unsub-msg">
+                <div class="sub-btn unsub" style="{% if subbed %} {{ 'display: block;' }} {% else %} {{ 'display: none;' }} {% endif %}">
                     <span>Click to UNSUBSCRIBE</span>
                 </div>
             </div>
@@ -75,5 +81,9 @@
         </div>
     </div>
 
+
+{% endblock %}
+
+{% block body_js %}
 
 {% endblock %}
