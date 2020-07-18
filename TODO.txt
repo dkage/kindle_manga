@@ -1,6 +1,7 @@
 # Now
--> Create validation to change button color checking database
-
+Create jquery to change button when clicked
+Check if div subscription background colors are good
+----- Create validation to change button color checking database
 ----- Create jquery to change subscribe button color
 Create function to fill chapter log
 Create validation to detail view show NO CHAPTERS YET, CLICK TO FORCE SCAN (ajax later)
