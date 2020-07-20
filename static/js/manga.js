@@ -16,3 +16,23 @@ $(function() {
         });
     })
 });
+
+
+$(function() {
+    $("#subscribe").click(function () {
+
+        let subscribe_div = $("#subscribe")
+
+        if (subscribe_div.hasClass('subbed')){
+
+            subscribe_div.removeClass("subbed");
+            subscribe_div.addClass("unsubbed");
+
+        }else{
+
+            subscribe_div.removeClass("unsubbed");
+            subscribe_div.addClass("subbed");
+
+        }
+    })
+});
