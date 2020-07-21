@@ -23,6 +23,7 @@ class Chapter(models.Model):
     manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
     chapter = models.CharField(max_length=255)
     chapter_title = models.CharField(max_length=255)
+    chapter_url = models.CharField(max_length=255)
     chapter_date = models.DateField()
 
 

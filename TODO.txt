@@ -1,11 +1,11 @@
 # Now
-Create jquery to change button when clicked
-Check if div subscription background colors are good
+Create function to fill chapter log
+----- Add anchor to dashboard icons
+----- Create jquery to change button when clicked
+----- Check if div subscription background colors are good
 ----- Create validation to change button color checking database
 ----- Create jquery to change subscribe button color
-Create function to fill chapter log
 Create validation to detail view show NO CHAPTERS YET, CLICK TO FORCE SCAN (ajax later)
-Add anchor to dashboard icons
 Create function to subscribe button to fill database subscriptions
 Create function to unsub ''
 Create log of subs functions

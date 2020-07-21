@@ -20,17 +20,21 @@
             </div>
             <div class="row">
                 {% for sub in subs %}
-                    <div class="card">
-                        <div class="manga-title">
-                            <h4>{{ sub }}</h4>
-                        </div>
-                        {#                    {{ sub.id }}<br>#}
-                        {#                    {{ base_url|add:sub.manga_reader_url }}#}
+                    <div class="subscription">
+                        <a href="{% url 'manga' sub.id %}">
+                            <div class="card">
+                                <div class="manga-title">
+                                    <h4>{{ sub }}</h4>
+                                </div>
+                                {#                    {{ sub.id }}<br>#}
+                                {#                    {{ base_url|add:sub.manga_reader_url }}#}
 
-                        <div class="cover-box">
-                            <img src="{{ covers|get_item:sub.id }}" alt="{{ sub }} manga cover">
-                        </div>
+                                <div class="cover-box">
+                                    <img src="/media/covers/{{ covers|get_item:sub.id }}" alt="{{ sub }} manga cover">
+                                </div>
+                            </div>
                     </div>
+                    </a>
                 {% endfor %}
             </div>
 

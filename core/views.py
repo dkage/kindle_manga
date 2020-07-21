@@ -9,10 +9,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from defines import COVERS_DIR
 # App
 from core.forms import SignUpForm, SignInForm
-from core.models import SystemLog, Manga
+from core.models import SystemLog, Manga, Chapter
 # Scraper
 from functions.spider import get_all_series, get_all_chapters, get_image_url, BASE_URL, download_cover
 # Misc
+from datetime import datetime
 import os
 import re
 
@@ -24,7 +25,10 @@ def index(request):
 
         covers = dict()
         for sub in subscriptions:
-            covers[sub.id] = get_image_url(sub.manga_reader_url)
+            # TODO add function to check if cover image is already downloaded here
+            series_url = sub.manga_reader_url
+            img_name = ''.join([series_url.replace('/', ''), '.jpg'])
+            covers[sub.id] = img_name
 
         db_data = {'subs': subscriptions,
                    'covers': covers,
@@ -155,15 +159,19 @@ def about(request):
 
 
 def test(request, pk):
-    # death note = 1073
-    manga_model = get_object_or_404(Manga, pk=1073)
-    url = manga_model.manga_reader_url
+    # death note = 1074
+    manga_model = get_object_or_404(Manga, pk=1074)
 
-    chapters = get_all_chapters('/one-piece')
+    chapters = get_all_chapters(manga_model.manga_reader_url)
+    print(chapters)
+    print(chapters[0][3])
     for chapter in chapters:
-        chapter_number = re.findall(r'\d+', chapter[0])[0]
-        chapter_name = chapter[1]
-        chapter_date = chapter[2]
+        chapter_model = Chapter(chapter=chapter[0],
+                                chapter_title=chapter[1],
+                                chapter_url=chapter[2],
+                                chapter_date=datetime.strptime(chapter[3], '%m/%d/%Y').date(),
+                                manga_id=manga_model.id)
+        chapter_model.save()
 
     # when relationship entry is not found yet
     # try:
@@ -193,7 +201,7 @@ def full_scan(request):
 
     # TODO add another log, and find a way to return when finished in ajax
 
-    return HttpResponse('Adrian, I did it')
+    return HttpResponse('Full scan executed.')
 
 
 def subscribe(request):
