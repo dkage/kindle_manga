@@ -17,7 +17,6 @@
     <div class="row manga-title">
         <h2>
             {{ manga }}
-            {{ subbed }}
         </h2>
     </div>
 
@@ -31,10 +30,10 @@
                     {% csrf_token %}
                     <input type="hidden" name="manga_id" value="{{ manga.id }}">
                 </div>
-                <div class="sub-btn sub" style="{% if subbed %} {{ 'display: none;' }} {% else %} {{ 'display: block;' }} {% endif %}">
+                <div id="subscribe_text" class="sub-btn sub" style="{% if subbed %} {{ 'display: none;' }} {% else %} {{ 'display: block;' }} {% endif %}">
                     <span>Click to SUBSCRIBE</span>
                 </div>
-                <div class="sub-btn unsub" style="{% if subbed %} {{ 'display: block;' }} {% else %} {{ 'display: none;' }} {% endif %}">
+                <div id="unsubscribe_text" class="sub-btn unsub" style="{% if subbed %} {{ 'display: block;' }} {% else %} {{ 'display: none;' }} {% endif %}">
                     <span>Click to UNSUBSCRIBE</span>
                 </div>
             </div>

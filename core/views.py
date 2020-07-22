@@ -160,18 +160,18 @@ def about(request):
 
 def test(request, pk):
     # death note = 1074
-    manga_model = get_object_or_404(Manga, pk=1074)
+    manga_model = get_object_or_404(Manga, pk=2778)
 
-    chapters = get_all_chapters(manga_model.manga_reader_url)
-    print(chapters)
-    print(chapters[0][3])
+    chapters = get_all_chapters(manga_model.manga_reader_url)  # Grabs all chapters from manga_reader URL
+
     for chapter in chapters:
         chapter_model = Chapter(chapter=chapter[0],
                                 chapter_title=chapter[1],
                                 chapter_url=chapter[2],
                                 chapter_date=datetime.strptime(chapter[3], '%m/%d/%Y').date(),
                                 manga_id=manga_model.id)
-        chapter_model.save()
+        if not Chapter.objects.filter(chapter=chapter[0], manga_id=pk).exists():
+            chapter_model.save()
 
     # when relationship entry is not found yet
     # try:
