@@ -9,6 +9,7 @@ Create validation to detail view show NO CHAPTERS YET, CLICK TO FORCE SCAN (ajax
 Create function to subscribe button to fill database subscriptions
 Create function to unsub ''
 Create log of subs functions
+Fix card size of subscriptions at home
 
 # Soon
 Think how to choose which are going to be downloaded

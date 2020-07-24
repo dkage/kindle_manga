@@ -15,7 +15,10 @@ li>a {
     padding-bottom: 0.75em;
 }
 
-
 a:hover {
     text-decoration: none;
+}
+
+.search {
+    padding: 20px 0 50px 0;
 }
