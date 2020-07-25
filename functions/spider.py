@@ -162,3 +162,21 @@ def download_cover(series_url):
         del http_return
 
     return 'Success'
+
+
+def check_cover(series_url):
+    """
+    Check if cover is already downloaded, and return img_name for given series.
+
+    :param series_url: Series to search for.
+    :return: img_name with the filename for the cover image file.
+    """
+
+    img_name = ''.join([series_url.replace('/', ''), '.jpg'])
+    cover_path = os.path.join(COVERS_DIR, img_name)
+
+    # Check if cover is already downloaded, if it isn't, scrap and download from mangareader
+    if not os.path.isfile(cover_path):
+        download_cover(series_url)
+
+    return img_name

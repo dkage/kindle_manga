@@ -11,7 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from core.forms import SignUpForm, SignInForm
 from core.models import SystemLog, Manga, Chapter
 # Scraper
-from functions.spider import get_all_series, get_all_chapters, get_image_url, BASE_URL, download_cover
+from functions.spider import get_all_series, get_all_chapters, get_image_url, BASE_URL, check_cover
 # Log functions
 from core.log_functions import log_full_scan, log_full_scan_query
 # Misc
@@ -49,6 +49,7 @@ def restricted(request):
     :param request: Django request object
     :return: return view for restricted webpage, or redirects to basic index.
     """
+
     if request.user.is_superuser:
         system_log = log_full_scan_query(request)
         return render(request, 'restricted.html', {'system_log': system_log})
@@ -130,7 +131,9 @@ class MangaDetailView(LoginRequiredMixin, DetailView):
     model = Manga
     template_name = 'manga.html'
 
+    # Grabs additional data, not included in the DetailView generic view.
     def get_context_data(self, **kwargs):
+
         # Call the base implementation first to get a context for the current object being detailed
         context = super().get_context_data(**kwargs)
 
@@ -143,14 +146,7 @@ class MangaDetailView(LoginRequiredMixin, DetailView):
             context['subbed'] = False
 
         series_url = self.object.manga_reader_url
-
-        img_name = ''.join([series_url.replace('/', ''), '.jpg'])
-        cover_path = os.path.join(COVERS_DIR, img_name)
-
-        self.object.cover = img_name
-        # Check if cover is already downloaded, if it isn't, scrap and download from mangareader
-        if not os.path.isfile(cover_path):
-            download_cover(series_url)
+        self.object.cover = check_cover(series_url)
 
         return context
 
