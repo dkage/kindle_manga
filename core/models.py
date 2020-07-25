@@ -22,6 +22,7 @@ class Kindle(models.Model):
 class Chapter(models.Model):
     manga = models.ForeignKey(Manga, on_delete=models.CASCADE)
     chapter = models.CharField(max_length=255)
+    # TODO add new field to list chapter number, grabbing # from chapter string using regex, for better sort (natsort)
     chapter_title = models.CharField(max_length=255)
     chapter_url = models.CharField(max_length=255)
     chapter_date = models.DateField()

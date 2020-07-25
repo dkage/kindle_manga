@@ -85,3 +85,8 @@
 .date-info {
     font-weight: bold;
 }
+
+#chapters-not-found {
+    padding-top: 190px;
+    padding-bottom: 20px;
+}

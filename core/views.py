@@ -145,8 +145,15 @@ class MangaDetailView(LoginRequiredMixin, DetailView):
         else:
             context['subbed'] = False
 
+        # Grabs manga cover image
         series_url = self.object.manga_reader_url
         self.object.cover = check_cover(series_url)
+
+        # Grabs every chapter for given manga
+        try:
+            context['chapters'] = Chapter.objects.filter(manga_id=self.object.id).order_by('id')
+        except Chapter.DoesNotExist:
+            context['chapters'] = None
 
         return context
 
