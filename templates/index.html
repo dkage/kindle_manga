@@ -1,15 +1,34 @@
 {% extends 'layout/base.html' %}
-
+{% load static %}
 
 {% block title %}
     Kindle Manga
 {% endblock %}
 
-{% block body %}
-    <div>
+{% block additional_head %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
+{% block body %}
+    <div id="landing_page">
+        <div id="home_title">
+            <h1>
+                Kindle Manga
+            </h1>
+        </div>
         <div>
-            This will contain the explanation about the system. Landing page for home when logged out.
+            <div>
+                <h3>Read your favorite mangas directly from your Kindle</h3>
+                <p>add image</p>
+            </div>
+        </div>
+        <div>
+            <h3>Subscribe, choose how many chapters to receive per day</h3>
+            <p>add image</p>
+        </div>
+        <div>
+            <h3>You can claim up to 15 chapters per day to receive automatically on your Kindle e-mail</h3>
+            <p>add image</p>
         </div>
 
     </div>

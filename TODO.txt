@@ -1,6 +1,7 @@
 # Now
 Create log of subs functions
---Create validation to detail view show NO CHAPTERS YET, CLICK TO FORCE SCAN (ajax later)
+Migrate this to do list into Trello
+----- Create validation to detail view show NO CHAPTERS YET, CLICK TO FORCE SCAN (ajax later)
 ----- Create function to fill chapter log
 ----- Add anchor to dashboard icons
 ----- Create jquery to change button when clicked
@@ -8,13 +9,14 @@ Create log of subs functions
 ----- Create validation to change button color checking database
 ----- Create jquery to change subscribe button color
 ----- Create function to subscribe button to fill database subscriptions
------ Create function to unsub ''
+----- Create function to unsub
 Create ajax for scanning for chapters for the first time when button is pressed. (count as daily actions?)
 Study how to create logic to choose which chapters will be sent, or which will be the first sent when subbed to series
 Create validation to not accept spam on chapter_scan. Check last date and wait 2 hours?
 Fix card size of subscriptions at home (sizes currently being determined by cover image size)
 
 # Soon
+Create /account_success on user creation
 Think how to choose which are going to be downloaded
 Think a way how to scan daily. Scan only subscribed series? probably
 Check how to log which chapters each user downloaded
@@ -25,6 +27,8 @@ Fill featured page (count how many subs each manga, show five or ten first (?))
 # No hurry
 Fill about us page
 Make logo?
-Change system name? (to not contain kindle on it)
+Change system name? (to not contain kindle on it - probably for the better)
 Add donation button?
 Improve layouts
+
+---- = already done

@@ -1,27 +1,11 @@
-body, ul, li, p {
-    list-style: none;
-    font-size: 1.2rem;
-    font-family: Roboto, serif;
-    display: flex;
-    flex-direction: column;
+#landing_page {
+    text-align: center;
 }
 
-#top-nav {
-    background: #000000 !important;
-    height: 70px;
-    justify-content: center;
-    align-content: center;
-    padding: 0 20px 0 20px;
+#home_title {
+    padding-top: 50px;
 }
 
-#nav-mobile {
-    display: block;
-}
-
-body{
-    background: var(--background-color);
-}
-
-a {
-    color: var(--color-primary);
+#landing_page > div {
+    padding-bottom: 150px;
 }

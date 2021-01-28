@@ -38,10 +38,10 @@
                 {% endfor %}
             </div>
 
-            <!-- IN CASE USER THERE IS NO SUBSCRIPTIONS YET -->
-        {% else %}
-            <h3>You have not subscribed to any series yet.</h3>
-            <p class="hint">Find your favorite series on the <a href="#">Featured</a> or <a href="{% url 'manga_list' %}">All Series</a> menu</p>
+        {% else %} <!-- IN CASE USER THERE IS NO SUBSCRIPTIONS YET -->
+            <h3>You have not subscribed to any series yet. &#128549;</h3>
+            <br><br>
+            <p class="hint">Find and <span style="color: lightcoral; font-style: italic">SUBSCRIBE</span> to your favorite series on the <a href="#">Featured page</a> or clicking on <a href="{% url 'manga_list' %}">All Series</a> button above. You can also use the <span style="color: lightcoral; font-style: italic">search box</span> in the top bar.</p>
             <br><br>
         {% endif %}
 

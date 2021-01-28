@@ -1,6 +1,8 @@
 $(function() {
     const csrftoken = $("input[name='csrfmiddlewaretoken']").val();
-    const manga_id = $("input[name='manga_id']").val();
+    const manga_id  = $("input[name='manga_id']").val();
+
+    // TODO transform AJAX call into stand alone function, using differences as parameters
 
     $("#subscribe").on('click',function (){
         $.ajax({
@@ -12,9 +14,27 @@ $(function() {
             },
             success: function (result) {
                 console.log('Subscription')
+                // TODO check result
+                console.log(result)
             }
         });
-    })
+    });
+
+    $("#chapter-scan").on('click', function () {
+        $.ajax({
+            url: '/chapter_scan',
+            type: 'POST',
+            data: {
+                'csrfmiddlewaretoken': csrftoken,
+                'manga_id': manga_id
+            },
+            success: function (result) {
+                console.log('Chapters Scan');
+                console.log(result);
+                location.reload()
+            }
+        });
+    });
 });
 
 
@@ -44,3 +64,4 @@ $(function() {
         }
     })
 });
+

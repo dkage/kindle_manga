@@ -1,16 +1,16 @@
 from core.models import SystemLog, User
 
 
-def log_full_scan(request):
+def log_basic_entry(request, operation):
 
     logger = SystemLog()
-    logger.operation = 'Full Scan'
+    logger.operation = operation
     user = User.objects.get(id=request.user.id)
     logger.triggered_by = user
     logger.save()
 
 
-def log_full_scan_query(request):
+def log_full_scan_query():
     try:
         system_log = SystemLog.objects.filter(operation='Full Scan').order_by('-date')[0]
     except IndexError:
@@ -19,4 +19,3 @@ def log_full_scan_query(request):
         system_log['date'] = ''
 
     return system_log
-

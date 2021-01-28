@@ -30,6 +30,6 @@ urlpatterns = [
     # AJAX CRUDs paths
     path('subscribe', core.subscribe, name='subscribe'),
     path('full_scan', core.full_scan, name='full_scan'),
-    path('chapter_scan/<int:pk>', core.chapter_scan, name='chapter_scan'),
+    path('chapter_scan', core.chapter_scan, name='chapter_scan'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Adds /media/ folder to urls

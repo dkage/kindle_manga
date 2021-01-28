@@ -9,8 +9,13 @@ img {
 
 .card {
     max-width: 300px;
+    height: 470px;
     border-radius: 30px;
     margin-right: 50px;
+}
+
+.subscription {
+    padding-bottom: 30px;
 }
 
 .cover-box {

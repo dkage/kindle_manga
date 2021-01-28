@@ -13,7 +13,7 @@ from core.models import SystemLog, Manga, Chapter
 # Scraper
 from functions.spider import get_all_series, get_all_chapters, get_image_url, BASE_URL, check_cover
 # Log functions
-from core.log_functions import log_full_scan, log_full_scan_query
+from core.log_functions import log_basic_entry, log_full_scan_query
 # Misc
 from datetime import datetime
 import os
@@ -51,7 +51,7 @@ def restricted(request):
     """
 
     if request.user.is_superuser:
-        system_log = log_full_scan_query(request)
+        system_log = log_full_scan_query()
         return render(request, 'restricted.html', {'system_log': system_log})
     else:
         return redirect('index')
@@ -172,9 +172,9 @@ def full_scan(request):
     :return:
     """
 
-    log_full_scan(request)
-    all_series_array = get_all_series()
+    log_basic_entry(request, 'Full Scan started')
 
+    all_series_array = get_all_series()
     for series in all_series_array:
         try:
             Manga.objects.get(series_name=series[0], manga_reader_url=series[1])
@@ -182,23 +182,25 @@ def full_scan(request):
             manga = Manga(series_name=series[0], manga_reader_url=series[1])
             manga.save()
 
-    # TODO add another log, and find a way to return when finished in ajax
+    log_basic_entry(request, 'Full Scan finished successfully')
 
     return HttpResponse('Full scan executed.')
 
 
 @login_required(login_url='signin')
-def chapter_scan(request, manga_id):
+def chapter_scan(request):
     """
     This function checks every chapter available for the manga with ID received as parameter.
 
     :param request: Django request object;
-    :param manga_id: The ID of the manga on the database;
     :return:
     """
 
-    manga_model = get_object_or_404(Manga, pk=manga_id)  # Query for grabbing the ID Manga info.
+    manga_model = get_object_or_404(Manga, pk=request.POST['manga_id'])  # Query for grabbing the ID Manga info.
     chapters = get_all_chapters(manga_model.manga_reader_url)  # Grabs all chapters from mangareader using the URL
+
+    log_message = 'Chapter Scan started - ' + manga_model.series_name
+    log_basic_entry(request, log_message)
 
     # Saves every chapter not yet on the database.
     for chapter in chapters:
@@ -207,9 +209,14 @@ def chapter_scan(request, manga_id):
                                 chapter_url=chapter[2],
                                 chapter_date=datetime.strptime(chapter[3], '%m/%d/%Y').date(),
                                 manga_id=manga_model.id)
-        if not Chapter.objects.filter(chapter=chapter[0], manga_id=manga_id).exists():
+        if not Chapter.objects.filter(chapter=chapter[0], manga_id=request.POST['manga_id']).exists():
             chapter_model.save()
 
+    # TODO improve error handling to add to log
+    log_message = 'Chapter Scan finished - ' + manga_model.series_name
+    log_basic_entry(request, log_message)
+
+    # TODO improve return with response for AJAX call
     return HttpResponse('test')
 
 
